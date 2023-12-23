@@ -25,11 +25,13 @@ app.use('/uploads', express.static('uploads'));
 
 // Upload endpoint
 app.post('/upload', upload.array('image'), async (req, res) => {
+    
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No files uploaded.');
     }
 
     try {
+        const apiToken = req.body.apiToken;
         const printifyResponses = await Promise.all(req.files.map(async (file) => {
             const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
             const response = await uploadToPrintify(file.filename, uploadedImageUrl);
@@ -37,8 +39,8 @@ app.post('/upload', upload.array('image'), async (req, res) => {
             // Delete the file after successful upload to Printify
             fs.unlinkSync(file.path);
 
-            return response;
-            // return response.data;
+           
+            return response.data;
         }));
 
         res.send({ 
@@ -57,14 +59,14 @@ async function uploadToPrintify(fileName, imageUrl) {
         url: imageUrl
     };
 console.log('Request Body:', requestBody);
-    // const config = {
-    //     headers: {
-    //         'Authorization': 'Bearer YOUR_PRINTIFY_API_KEY'
-    //     }
-    // };
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${apiToken}`
+        }
+    };
 
-    // return axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config);
-    return requestBody;
+    return axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config);
+    
 }
 
 app.listen(port, () => {
