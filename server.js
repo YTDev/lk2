@@ -70,8 +70,14 @@ async function uploadToPrintify(apiToken, fileName, imageUrl) {
         }
     };
 
-    return axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config);
+    try {
+        return await axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config);
+    } catch (error) {
+        console.error('Printify API error:', error.response ? error.response.data : error);
+        throw error; // Re-throw the error to be caught in the calling function
+    }
 }
+
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
