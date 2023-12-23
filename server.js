@@ -29,13 +29,13 @@ app.post('/upload', upload.array('image'), async (req, res) => {
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No files uploaded.');
     }
-
-    try {
-        const apiToken = req.body.apiToken;
+    const apiToken = req.body.apiToken;
         
-        if (!apiToken) {
-            return res.status(400).send('API token is required.');
-        }
+    if (!apiToken) {
+        return res.status(400).send('API token is required.');
+    }
+    try {
+
         const printifyResponses = await Promise.all(req.files.map(async (file) => {
             const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
             const response = await uploadToPrintify(apiToken, file.filename, uploadedImageUrl);
