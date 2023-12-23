@@ -58,20 +58,19 @@ app.post('/upload', upload.array('image'), async (req, res) => {
     }
 });
 
-async function uploadToPrintify(fileName, imageUrl) {
+async function uploadToPrintify(apiToken, fileName, imageUrl) {
     const requestBody = {
         file_name: fileName,
         url: imageUrl
     };
-console.log('Request Body:', requestBody);
+
     const config = {
-    headers: {
-        'Authorization': 'Bearer ' + apiToken
+        headers: {
+            'Authorization': 'Bearer ' + apiToken
         }
     };
 
     return axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config);
-    
 }
 
 app.listen(port, () => {
