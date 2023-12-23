@@ -6,12 +6,13 @@
 </head>
 <body>
     <form id="uploadForm" enctype="multipart/form-data">
-        <input type="text" id="apiToken" placeholder="Enter your Printify API Token">
+        <input type="text" id="apiTokenInput" name="apiToken" placeholder="Enter Printify API Token">
         <input type="file" id="imageInput" accept="image/*" name="image" multiple>
         <button type="submit">Upload Images</button>
     </form>
     <div id="responseContainer"></div>
 
+    <script src="script.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
