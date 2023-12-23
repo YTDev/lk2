@@ -32,9 +32,13 @@ app.post('/upload', upload.array('image'), async (req, res) => {
 
     try {
         const apiToken = req.body.apiToken;
+        
+        if (!apiToken) {
+            return res.status(400).send('API token is required.');
+        }
         const printifyResponses = await Promise.all(req.files.map(async (file) => {
             const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
-            const response = await uploadToPrintify(file.filename, uploadedImageUrl);
+            const response = await uploadToPrintify(apiToken, file.filename, uploadedImageUrl);
 
             // Delete the file after successful upload to Printify
             fs.unlinkSync(file.path);
@@ -60,8 +64,8 @@ async function uploadToPrintify(fileName, imageUrl) {
     };
 console.log('Request Body:', requestBody);
     const config = {
-        headers: {
-            'Authorization': `Bearer ${apiToken}`
+    headers: {
+        'Authorization': 'Bearer ' + apiToken
         }
     };
 
