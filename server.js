@@ -25,7 +25,8 @@ app.use('/uploads', express.static('uploads'));
 
 // Upload endpoint
 app.post('/upload', upload.array('image'), async (req, res) => {
-    
+    console.log('API Token:', req.body.apiToken); // Log the API token
+    console.log('Files:', req.files);
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No files uploaded.');
     }
