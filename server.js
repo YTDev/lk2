@@ -39,10 +39,13 @@ app.post('/upload', upload.array('image'), async (req, res) => {
 
         const printifyResponses = await Promise.all(req.files.map(async (file) => {
             const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
+            console.log("image link :"+uploadedImageUrl);
+            console.log("filename :"+file.filename);
+            console.log("api token :"+apiToken);
             const response = await uploadToPrintify(apiToken, file.filename, uploadedImageUrl);
 
             // Delete the file after successful upload to Printify
-            fs.unlinkSync(file.path);
+            // fs.unlinkSync(file.path);
 
            
             return response.data;

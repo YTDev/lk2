@@ -1,7 +1,7 @@
 document.getElementById('uploadForm').addEventListener('submit', function(event) {
     event.preventDefault();
     var formData = new FormData(this);
-
+    console.log(formData.keys);
     fetch('/upload', {
         method: 'POST',
         body: formData
