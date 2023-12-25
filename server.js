@@ -45,7 +45,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
             const response = await uploadToPrintify(apiToken, file.filename, uploadedImageUrl);
 
             // Delete the file after successful upload to Printify
-            fs.unlink(file.path);
+            fs.unlinkSync(file.path);
 
            
             return response.data;
