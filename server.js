@@ -49,8 +49,8 @@ app.post('/upload', upload.array('image'), async (req, res) => {
 
             // Delete the file after successful upload to Printify
             try {
-                // fs.unlinkSync(file.path);
-                fs.rmdirSync('uploads');
+                fs.unlinkSync(file.path);
+                
                 console.log('File deleted successfully');
               } catch (err) {
                 console.error('Error occurred while deleting the file:', err);
@@ -68,6 +68,14 @@ app.post('/upload', upload.array('image'), async (req, res) => {
         console.error('Error:', error);
         res.status(500).send('Error processing files');
     }
+    try {
+        ffs.rmdirSync('uploads'); // Delete the uploads folder itself
+        
+        console.log('Upload deleted successfully');
+      } catch (err) {
+        console.error('Error occurred while deleting Upload:', err);
+      }
+    
     console.log('looooooooook :'+req.files);
 });
 
