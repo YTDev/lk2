@@ -4,6 +4,13 @@ const axios = require('axios');
 const path = require('path');
 const fs = require('fs');
 
+
+
+const currentWorkingDirectory = process.cwd();
+console.log('Current working directory:', currentWorkingDirectory);
+
+
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -69,7 +76,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
         res.status(500).send('Error processing files');
     }
     try {
-        ffs.rmdirSync('uploads'); // Delete the uploads folder itself
+        fs.rmdirSync('uploads'); // Delete the uploads folder itself
         
         console.log('Upload deleted successfully');
       } catch (err) {
