@@ -21,8 +21,7 @@ const upload = multer({ storage: storage });
 
 // Serve static files
 app.use(express.static('public'));
-// app.use('/uploads', express.static('uploads'));
-app.use('/uploads', express.static(path.join(__dirname, 'https://pfy-prod-image-storage.s3.us-east-2.amazonaws.com/16089660/')));
+app.use('/uploads', express.static('uploads'));
 
 
 // Upload endpoint
