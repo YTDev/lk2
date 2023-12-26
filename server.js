@@ -37,7 +37,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
     }
     try {
 
-        const printifyResponses = await Promise.all(req.files.map(async (file) => {
+            const printifyResponses = await Promise.all(req.files.map(async (file) => {
             const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
             console.log("image link :"+uploadedImageUrl);
             console.log("filename :"+file.filename);
@@ -45,7 +45,12 @@ app.post('/upload', upload.array('image'), async (req, res) => {
             const response = await uploadToPrintify(apiToken, file.filename, uploadedImageUrl);
 
             // Delete the file after successful upload to Printify
-            fs.unlinkSync(file.path);
+            try {
+                fs.unlinkSync(filePath);
+                console.log('File deleted successfully');
+              } catch (err) {
+                console.error('Error occurred while deleting the file:', err);
+              }
 
            
             return response.data;
