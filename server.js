@@ -8,8 +8,9 @@ const fs = require('fs');
 
 const currentWorkingDirectory = process.cwd();
 console.log('Current working directory:', currentWorkingDirectory);
-
-
+const parentDirectory = path.dirname('/app');
+console.log('Parent directory:', parentDirectory);
+console.log('Parent directory:', currentWorkingDirectory);
 
 const app = express();
 const port = process.env.PORT || 3000;
