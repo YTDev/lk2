@@ -10,7 +10,7 @@ const currentWorkingDirectory = process.cwd();
 console.log('Current working directory:', currentWorkingDirectory);
 const parentDirectory = path.dirname('/app');
 console.log('Parent directory:', parentDirectory);
-console.log('Parent directory:', currentWorkingDirectory);
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -29,7 +29,7 @@ const upload = multer({ storage: storage });
 
 // Serve static files
 app.use(express.static('public'));
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('/app/uploads'));
 
 
 
@@ -77,6 +77,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
         res.status(500).send('Error processing files');
     }
     try {
+
         fs.rmdirSync('uploads'); // Delete the uploads folder itself
         
         console.log('Upload deleted successfully');
