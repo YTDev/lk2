@@ -15,19 +15,7 @@ console.log('Parent directory:', parentDirectory);
 const app = express();
 const port = process.env.PORT || 3000;
 
-function countFilesInDirectory(directory) {
-    try {
-      const files = fs.readdirSync(directory);
-      return files.filter(file => fs.statSync(path.join(directory, file)).isFile()).length;
-    } catch (error) {
-      console.error("Error reading directory:", error);
-      return -1; // Indicates an error
-    }
-  }
-  
-  // Example usage
-  const uploadsDir = path.join(__dirname, 'uploads'); // Modify as per your directory structure
-  const fileCount = countFilesInDirectory(uploadsDir);
+
 
 
 
