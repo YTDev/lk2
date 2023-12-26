@@ -21,8 +21,8 @@ const upload = multer({ storage: storage });
 
 // Serve static files
 app.use(express.static('public'));
-app.use('/uploads', express.static('https://lk2-production.up.railway.app/uploads/'));
-// app.use('/uploads', express.static(path.join(__dirname, 'https://lk2-production.up.railway.app/uploads/')));
+// app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads/')));
 
 
 
