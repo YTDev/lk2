@@ -6,19 +6,14 @@ const fs = require('fs');
 
 
 
-const currentWorkingDirectory = process.cwd();
-console.log('Current working directory:', currentWorkingDirectory);
-const parentDirectory = path.dirname('/app');
-console.log('Parent directory:', parentDirectory);
+// const currentWorkingDirectory = process.cwd();
+// console.log('Current working directory:', currentWorkingDirectory);
+// const parentDirectory = path.dirname('/app');
+// console.log('Parent directory:', parentDirectory);
 
 
 const app = express();
 const port = process.env.PORT || 3000;
-
-
-
-
-
 
 
 
@@ -37,9 +32,9 @@ const upload = multer({ storage: storage });
 
 // Serve static files
 app.use(express.static('public'));
-app.use('/uploads', express.static('/uploads'));
 
 
+app.use('/uploads', express.static('uploads'));
 
 
 // Upload endpoint
