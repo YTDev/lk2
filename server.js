@@ -15,6 +15,26 @@ console.log('Parent directory:', parentDirectory);
 const app = express();
 const port = process.env.PORT || 3000;
 
+function countFilesInDirectory(directory) {
+    try {
+      const files = fs.readdirSync(directory);
+      return files.filter(file => fs.statSync(path.join(directory, file)).isFile()).length;
+    } catch (error) {
+      console.error("Error reading directory:", error);
+      return -1; // Indicates an error
+    }
+  }
+  
+  // Example usage
+  const uploadsDir = path.join(__dirname, 'uploads'); // Modify as per your directory structure
+  const fileCount = countFilesInDirectory(uploadsDir);
+
+
+
+
+
+
+
 // Configure Multer for file upload
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -29,7 +49,7 @@ const upload = multer({ storage: storage });
 
 // Serve static files
 app.use(express.static('public'));
-app.use('/uploads', express.static('/app/uploads'));
+app.use('/uploads', express.static('/uploads'));
 
 
 
@@ -76,14 +96,6 @@ app.post('/upload', upload.array('image'), async (req, res) => {
         console.error('Error:', error);
         res.status(500).send('Error processing files');
     }
-    try {
-
-        fs.rmdirSync('uploads'); // Delete the uploads folder itself
-        
-        console.log('Upload deleted successfully');
-      } catch (err) {
-        console.error('Error occurred while deleting Upload:', err);
-      }
     
     console.log('looooooooook :'+req.files);
 });
