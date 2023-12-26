@@ -22,6 +22,8 @@ const upload = multer({ storage: storage });
 // Serve static files
 app.use(express.static('public'));
 // app.use('/uploads', express.static('uploads'));
+const joinedPath = path.join(__dirname, 'uploads');
+console.log('loooookk : '+joinedPath);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads/')));
 
 
