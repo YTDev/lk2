@@ -21,10 +21,8 @@ const upload = multer({ storage: storage });
 
 // Serve static files
 app.use(express.static('public'));
-// app.use('/uploads', express.static('uploads'));
-const joinedPath = path.join(__dirname, 'uploads');
-console.log('loooookk : '+joinedPath);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads/')));
+app.use('/uploads', express.static('uploads'));
+
 
 
 
@@ -56,7 +54,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
               } catch (err) {
                 console.error('Error occurred while deleting the file:', err);
               }
-
+            
            
             return response.data;
         }));
@@ -69,6 +67,7 @@ app.post('/upload', upload.array('image'), async (req, res) => {
         console.error('Error:', error);
         res.status(500).send('Error processing files');
     }
+    console.log('looooooooook :'+req.files);
 });
 
 async function uploadToPrintify(apiToken, fileName, imageUrl) {
