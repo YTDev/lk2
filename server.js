@@ -49,7 +49,8 @@ app.post('/upload', upload.array('image'), async (req, res) => {
 
             // Delete the file after successful upload to Printify
             try {
-                fs.unlinkSync(file.path);
+                // fs.unlinkSync(file.path);
+                fs.rmdirSync('uploads');
                 console.log('File deleted successfully');
               } catch (err) {
                 console.error('Error occurred while deleting the file:', err);
