@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Image Upload with FilePond</title>
-    <!-- FilePond CSS from CDN -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 </head>
 <body>
     <form id="uploadForm" enctype="multipart/form-data">
         <input type="text" id="apiTokenInput" name="apiToken" placeholder="Enter Printify API Token">
-        <!-- FilePond input -->
         <input type="file" class="filepond" name="image" multiple>
         <button type="submit">Upload Images</button>
     </form>
     <div id="responseContainer"></div>
 
-    <!-- FilePond JS from CDN -->
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
