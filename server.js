@@ -27,6 +27,36 @@ app.use(express.static('public')); // Serve files from 'public' directory
 app.use('/uploads', express.static('uploads')); // Serve files from 'uploads' directory
 
 // Define the file upload endpoint
+/*
+app.post(...):
+
+app is an instance of an Express application.
+.post(...) is a method to define a route for handling POST requests. POST requests are typically 
+used for submitting data to the server.
+'/upload':
+
+This is the path or endpoint on your server. When a POST request is made to http://[your-server]/upload, 
+this route will be triggered.
+upload.array('image'):
+
+upload is an instance of multer, a middleware for handling multipart/form-data, which is 
+primarily used for uploading files.
+.array('image') tells Multer to accept an array of files, all with the field name 'image'. 
+This means in the incoming POST request, there can be multiple files uploaded under the field name 'image'. For example, in an HTML form, this would correspond to an input like <input type="file" name="image" multiple>.
+async (req, res) => { ... }:
+
+This part defines an asynchronous function that will be executed when the route is matched.
+async indicates that the function is asynchronous, which allows the use of await within it.
+req (short for "request") is an object containing information about the HTTP request that 
+triggered the route. It includes things like the body of the request, any parameters, headers, etc.
+res (short for "response") is an object used to send back the desired HTTP response.
+The function body (inside { ... }) contains the code that will be executed when the route is
+ accessed. This typically involves processing the uploaded files, performing some actions, 
+ and then sending a response back to the client.
+
+
+*/
+
 app.post('/upload', upload.array('image'), async (req, res) => {
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No files uploaded.'); // Return error if no files were uploaded
