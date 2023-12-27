@@ -1,19 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize FilePond
-    FilePond.registerPlugin(
-	
-        // encodes the file as base64 data
-      FilePondPluginFileEncode,
-        
-        // validates the size of the file
-        FilePondPluginFileValidateSize,
-        
-        // corrects mobile image orientation
-        FilePondPluginImageExifOrientation,
-        
-        // previews dropped images
-      FilePondPluginImagePreview
-    );
+   
     const inputElement = document.querySelector('input[type="file"]');
     const pond = FilePond.create(inputElement);
 
