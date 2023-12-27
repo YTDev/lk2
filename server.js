@@ -1,109 +1,91 @@
+// Import necessary modules
 const express = require('express');
 const multer = require('multer');
 const axios = require('axios');
 const path = require('path');
 const fs = require('fs');
 
-
-
-// const currentWorkingDirectory = process.cwd();
-// console.log('Current working directory:', currentWorkingDirectory);
-// const parentDirectory = path.dirname('/app');
-// console.log('Parent directory:', parentDirectory);
-
-
+// Initialize Express app
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000; // Set the port, default to 3000 if not specified in environment
 
-
-
-
-// Configure Multer for file upload
+// Configure Multer for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, 'uploads/'); // Set destination directory for uploaded files
     },
     filename: (req, file, cb) => {
+        // Set filename for uploaded files
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }); // Create Multer instance with custom storage settings
 
 // Serve static files
-app.use(express.static('public'));
+app.use(express.static('public')); // Serve files from 'public' directory
+app.use('/uploads', express.static('uploads')); // Serve files from 'uploads' directory
 
-
-app.use('/uploads', express.static('uploads'));
-
-
-// Upload endpoint
+// Define the file upload endpoint
 app.post('/upload', upload.array('image'), async (req, res) => {
-    console.log('API Token:', req.body.apiToken); // Log the API token
-    console.log('Files:', req.files);
     if (!req.files || req.files.length === 0) {
-        return res.status(400).send('No files uploaded.');
+        return res.status(400).send('No files uploaded.'); // Return error if no files were uploaded
     }
-    const apiToken = req.body.apiToken;
-        
+
+    const apiToken = req.body.apiToken; // Extract API token from request body
     if (!apiToken) {
-        return res.status(400).send('API token is required.');
+        return res.status(400).send('API token is required.'); // Return error if API token is missing
     }
+
     try {
+        // Process each uploaded file
+        const printifyResponses = await Promise.all(req.files.map(async (file) => {
+            const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`; // Create URL for uploaded image
+            const response = await uploadToPrintify(apiToken, file.filename, uploadedImageUrl); // Upload image to Printify
 
-            const printifyResponses = await Promise.all(req.files.map(async (file) => {
-            const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
-            console.log("image link :"+uploadedImageUrl);
-            console.log("filename :"+file.filename);
-            console.log("api token :"+apiToken);
-            const response = await uploadToPrintify(apiToken, file.filename, uploadedImageUrl);
-
-            // Delete the file after successful upload to Printify
+            // Delete the file from the server
             try {
                 fs.unlinkSync(file.path);
-                
-                console.log('File deleted successfully');
-              } catch (err) {
+            } catch (err) {
                 console.error('Error occurred while deleting the file:', err);
-              }
-            
-           
-            return response.data;
+            }
+
+            return response.data; // Return the response data from Printify
         }));
 
+        // Send response back to client
         res.send({ 
             message: 'Images uploaded and files deleted successfully',
-            printifyResponses 
+            printifyResponses
         });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).send('Error processing files');
+        res.status(500).send('Error processing files'); // Handle any errors during processing
     }
-    
-    console.log('looooooooook :'+req.files);
 });
 
+// Function to handle uploading images to Printify
 async function uploadToPrintify(apiToken, fileName, imageUrl) {
     const requestBody = {
-        file_name: fileName,
-        url: imageUrl
+        file_name: fileName, // File name for the image
+        url: imageUrl // URL of the image
     };
 
     const config = {
         headers: {
-            'Authorization': 'Bearer ' + apiToken
+            'Authorization': 'Bearer ' + apiToken // Authorization header with API token
         }
     };
 
     try {
-        return await axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config);
+        return await axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config); // POST request to Printify
     } catch (error) {
         console.error('Printify API error:', error.response ? error.response.data : error);
-        throw error; // Re-throw the error to be caught in the calling function
+        throw error; // Propagate error for handling upstream
     }
 }
 
-
+// Start the server
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}`); // Log the server start and port
 });
