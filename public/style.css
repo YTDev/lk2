@@ -22,10 +22,12 @@
 .filepond--drip-blob {
 	background-color: #7f8a9a;
 }
+
+
 /**
  * Page Styles
  */
- html {
+html {
 	padding:30vh 0 0;
 }
 
