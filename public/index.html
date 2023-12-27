@@ -2,25 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bulk Image Upload for Printify</title>
-    <link href="https://cdn.jsdelivr.net/npm/dropzone@5.7.0/dist/min/dropzone.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
+    <title>Image Upload with FilePond</title>
+    <!-- FilePond CSS from CDN -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 </head>
 <body>
     <form id="uploadForm" enctype="multipart/form-data">
         <input type="text" id="apiTokenInput" name="apiToken" placeholder="Enter Printify API Token">
-        
-        <!-- Dropzone Area -->
-        <div class="dropzone" id="imageDropzone"></div>
-        
+        <!-- FilePond input -->
+        <input type="file" class="filepond" name="image" multiple>
         <button type="submit">Upload Images</button>
     </form>
     <div id="responseContainer"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/dropzone@5.7.0/dist/min/dropzone.min.js"></script>
-    
+    <!-- FilePond JS from CDN -->
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
