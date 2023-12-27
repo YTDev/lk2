@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
         url: "/upload",
         autoProcessQueue: false,
         addRemoveLinks: true,
-        paramName: "image", // The name that will be used to transfer the file
+        paramName: 'image', // The name that will be used to transfer the file
         parallelUploads: 10, // Adjust as per your requirements
-        uploadMultiple: true, // Allow multiple file uploads
+        uploadMultiple: false, // Allow multiple file uploads
         maxFiles: 10, // Adjust the maximum number of files here
         // You can add more options as required
     });
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!formData.has('apiToken')) {
         var apiTokenInput = document.getElementById('apiTokenInput');
         formData.append("apiToken", apiTokenInput.value);
-    }
+        }
         // Debugging: Log formData entries
         for (var pair of formData.entries()) {
             console.log(pair[0]+ ', ' + pair[1]); 
