@@ -37,12 +37,15 @@ used for submitting data to the server.
 
 This is the path or endpoint on your server. When a POST request is made to http://[your-server]/upload, 
 this route will be triggered.
+
 upload.array('image'):
 
 upload is an instance of multer, a middleware for handling multipart/form-data, which is 
 primarily used for uploading files.
 .array('image') tells Multer to accept an array of files, all with the field name 'image'. 
-This means in the incoming POST request, there can be multiple files uploaded under the field name 'image'. For example, in an HTML form, this would correspond to an input like <input type="file" name="image" multiple>.
+This means in the incoming POST request, there can be multiple files uploaded under the field name 'image'. For example, 
+in an HTML form, this would correspond to an input like <input type="file" name="image" multiple>.
+
 async (req, res) => { ... }:
 
 This part defines an asynchronous function that will be executed when the route is matched.
@@ -58,6 +61,9 @@ The function body (inside { ... }) contains the code that will be executed when 
 */
 
 app.post('/upload', upload.array('image'), async (req, res) => {
+
+    console.log("API Token:", req.body.apiToken); // Log the API token
+    console.log("Files:", req.files);
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No files uploaded.'); // Return error if no files were uploaded
     }

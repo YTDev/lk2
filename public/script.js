@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function() {
     myDropzone.on("sending", function(file, xhr, formData) {
         var apiTokenInput = document.getElementById('apiTokenInput');
         formData.append("apiToken", apiTokenInput.value);
+        // Debugging: Log formData entries
+        for (var pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+        }
     });
 
     // Handle form submission
