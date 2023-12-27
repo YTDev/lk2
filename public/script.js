@@ -35,14 +35,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 // Manually add each file to formData
-myDropzone.on("sendingmultiple", function(files, xhr, formData) {
+myDropzone.on("sending", function(file, xhr, formData) {
     var apiTokenInput = document.getElementById('apiTokenInput');
     formData.append("apiToken", apiTokenInput.value);
-
+    
     // Add each file to formData
-    for (let i = 0; i < files.length; i++) {
-        formData.append("image", files[i], files[i].name);
-    }
+    formData.append("image", file, file.name);
 });
 
 
