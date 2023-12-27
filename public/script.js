@@ -16,8 +16,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Add the API token to Dropzone's formData
     myDropzone.on("sending", function(file, xhr, formData) {
+    
+        // Check if apiToken is already appended
+        if (!formData.has('apiToken')) {
         var apiTokenInput = document.getElementById('apiTokenInput');
         formData.append("apiToken", apiTokenInput.value);
+    }
         // Debugging: Log formData entries
         for (var pair of formData.entries()) {
             console.log(pair[0]+ ', ' + pair[1]); 
