@@ -9,30 +9,44 @@ document.addEventListener("DOMContentLoaded", function() {
         addRemoveLinks: true,
         paramName: 'image', // The name that will be used to transfer the file
         parallelUploads: 10, // Adjust as per your requirements
-        uploadMultiple: false, // Allow multiple file uploads
+        uploadMultiple: true, // Allow multiple file uploads
         maxFiles: 10, // Adjust the maximum number of files here
         // You can add more options as required
     });
 
     // Add the API token to Dropzone's formData
-    myDropzone.on("sending", function(file, xhr, formData) {
+    // myDropzone.on("sending", function(file, xhr, formData) {
     
-        // Check if apiToken is already appended
-        if (!formData.has('apiToken')) {
-        var apiTokenInput = document.getElementById('apiTokenInput');
-        formData.append("apiToken", apiTokenInput.value);
-        }
-        // Debugging: Log formData entries
-        for (var pair of formData.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]); 
-        }
-    });
+    //     // Check if apiToken is already appended
+    //     if (!formData.has('apiToken')) {
+    //     var apiTokenInput = document.getElementById('apiTokenInput');
+    //     formData.append("apiToken", apiTokenInput.value);
+    //     }
+    //     // Debugging: Log formData entries
+    //     for (var pair of formData.entries()) {
+    //         console.log(pair[0]+ ', ' + pair[1]); 
+    //     }
+    // });
 
     // Handle form submission
     document.getElementById("uploadForm").addEventListener("submit", function(event) {
         event.preventDefault();
         myDropzone.processQueue(); // Process the uploaded files
     });
+
+// Manually add each file to formData
+myDropzone.on("sendingmultiple", function(files, xhr, formData) {
+    var apiTokenInput = document.getElementById('apiTokenInput');
+    formData.append("apiToken", apiTokenInput.value);
+
+    // Add each file to formData
+    for (let i = 0; i < files.length; i++) {
+        formData.append("image", files[i], files[i].name);
+    }
+});
+
+
+
 
     // Handle the response after all files have been uploaded
     myDropzone.on("queuecomplete", function() {
