@@ -1,31 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize FilePond on the file input
-    const pond = FilePond.create(document.getElementById('imageInput'));
+    const pond = FilePond.create(document.getElementById('imageInput'), {
+        server: {
+            process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
+                const formData = new FormData();
+                formData.append(fieldName, file, file.name);
+                formData.append('apiToken', document.getElementById('apiTokenInput').value);
 
-    // Handle form submission
-    document.getElementById('uploadForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Use FilePond's API to get the files
-        const files = pond.getFiles();
-
-        // Create FormData and append files
-        let formData = new FormData();
-        formData.append('apiToken', document.getElementById('apiTokenInput').value);
-        files.forEach(fileItem => {
-            formData.append('image', fileItem.file);
-        });
-
-        // Fetch request
-        fetch('/upload', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('responseContainer').innerHTML = 
-                `<p>Images uploaded: ${JSON.stringify(data)}</p>`;
-        })
-        .catch(error => console.error('Error:', error));
+                const request = new XMLHttpRequest();
+                request.open('POST', '/upload');
+                request.onload = function() {
+                    if (request.status >= 200 && request.status < 300) {
+                        load(request.responseText);
+                    } else {
+                        error('oh no');
+                    }
+                };
+                request.send(formData);
+                return {
+                    abort: () => {
+                        request.abort();
+                        abort();
+                    }
+                };
+            }
+        }
     });
+
+    // No need to handle form submission here as FilePond handles file upload
 });
