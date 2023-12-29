@@ -1,3 +1,18 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+
+const inputElement = document.querySelector('input[type="file"]');
+const pond = FilePond.create(inputElement);
+
+// Mock server processing
+FilePond.setOptions({
+    server: {
+        process: '/upload',
+        
+    }
+});
+
+
 document.getElementById('uploadForm').addEventListener('submit', function(event) {
     event.preventDefault();
     var formData = new FormData(this);
@@ -13,3 +28,5 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
     })
     .catch(error => console.error('Error:', error));
 });
+
+})
