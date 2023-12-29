@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Image Upload</title>
+    <!-- FilePond CSS -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 </head>
 <body>
     <form id="uploadForm" enctype="multipart/form-data">
@@ -11,7 +13,8 @@
         <button type="submit">Upload Images</button>
     </form>
     <div id="responseContainer"></div>
-
+    
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script src="script.js"></script>
     
 </body>
