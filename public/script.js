@@ -1,32 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    const inputElement = document.querySelector('input[type="file"]');
 
+    // Initialize FilePond with server configuration
+    const pond = FilePond.create(inputElement, {
+        server: {
+            process: {
+                url: '/upload',
+                method: 'POST'
+            }
+            // You can add other server endpoints like 'revert' if needed
+        }
+    });
 
-const inputElement = document.querySelector('input[type="file"]');
-const pond = FilePond.create(inputElement);
-
-// Mock server processing
-FilePond.setOptions({
-    server: {
-        process: '/upload',
-        
-    }
+    // Optionally, handle additional events or custom logic
+    // Example: Showing response in 'responseContainer'
+    pond.on('processfile', (error, file) => {
+        if (error) {
+            console.error('Error:', error);
+            return;
+        }
+        // Assuming you want to show some response after file processing
+        document.getElementById('responseContainer').textContent = 'File uploaded successfully';
+    });
 });
-
-
-document.getElementById('uploadForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var formData = new FormData(this);
-    console.log(formData.keys);
-    fetch('/upload', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('responseContainer').innerHTML = 
-            `<p>Images uploaded. Printify responses: ${JSON.stringify(data.printifyResponses)}</p>`;
-    })
-    .catch(error => console.error('Error:', error));
-});
-
-})
