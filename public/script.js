@@ -1,25 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const inputElement = document.querySelector('input[type="file"]');
+    // Initialize FilePond on the file input
+    const pond = FilePond.create(document.getElementById('imageInput'));
 
-    // Initialize FilePond with server configuration
-    const pond = FilePond.create(inputElement, {
-        server: {
-            process: {
-                url: '/upload',
-                method: 'POST'
-            }
-            // You can add other server endpoints like 'revert' if needed
-        }
-    });
+    // Handle form submission
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    // Optionally, handle additional events or custom logic
-    // Example: Showing response in 'responseContainer'
-    pond.on('processfile', (error, file) => {
-        if (error) {
-            console.error('Error:', error);
-            return;
-        }
-        // Assuming you want to show some response after file processing
-        document.getElementById('responseContainer').textContent = 'File uploaded successfully';
+        // Use FilePond's API to get the files
+        const files = pond.getFiles();
+
+        // Create FormData and append files
+        let formData = new FormData();
+        formData.append('apiToken', document.getElementById('apiTokenInput').value);
+        files.forEach(fileItem => {
+            formData.append('image', fileItem.file);
+        });
+
+        // Fetch request
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('responseContainer').innerHTML = 
+                `<p>Images uploaded: ${JSON.stringify(data)}</p>`;
+        })
+        .catch(error => console.error('Error:', error));
     });
 });
