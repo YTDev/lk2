@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         abort();
                     }
                 };
-            }
+            },
+            revert: null, // Prevent FilePond from sending a DELETE request
+        
         }
     });
 
