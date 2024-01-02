@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize FilePond on a specific input element with custom settings
-    const pond = FilePond.create(document.getElementById('imageInput'), {
+    const pond = FilePond.create(document.getElementById('imageInput')); 
+    pond.setOptions({
+        
     instantUpload: false, // Disable automatic upload when a file is added
     server: {
         // Define a custom processing function for file uploads
@@ -41,9 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
         iconRetry: pond.iconRemove,
         labelTapToUndo: 'Tap to remove from the UI',
         labelFileProcessingComplete: 'Upload complete',
-    });
 
-
+    })
+    
     document.getElementById('uploadForm').addEventListener('submit', function(event) {
         event.preventDefault();
         
