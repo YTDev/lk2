@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
             revert: null, // Prevent FilePond from sending a DELETE request
             // ... other server options if any 
         },
-        iconUndo: pond.iconDone,
+        iconUndo: pond.iconRetry,
         labelTapToUndo: 'Success',
         labelFileProcessingComplete: 'Upload complete',
 
