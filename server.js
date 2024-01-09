@@ -67,8 +67,8 @@ app.post('/upload', upload.single('image'), async (req, res) =>{
     try {
         const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
         const response = await uploadToPrintify(apiToken, req.file.filename, uploadedImageUrl);
-        console.log(uploadedImageUrl);
-        console.log(response);
+        console.log("the link:"+uploadedImageUrl);
+        // console.log(response);
         // Delete the file from the server after uploading
         try {
             fs.unlinkSync(req.file.path);
@@ -100,7 +100,7 @@ async function uploadToPrintify(apiToken, fileName, imageUrl) {
         }
     };
 
-    console.log("Here is the object I'm sending :"+JSON.stringify(requestBody, null, 4));
+    console.log("Here is the object I'm sending : "+JSON.stringify(requestBody, null, 4));
 
     try {
         return await axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config); // POST request to Printify
