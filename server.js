@@ -67,7 +67,7 @@ app.post('/upload', upload.single('image'), async (req, res) =>{
     try {
         const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
         const response = await uploadToPrintify(apiToken, req.file.filename, uploadedImageUrl);
-        console.log("The link: "+uploadedImageUrl);
+        // console.log("The link: "+uploadedImageUrl);
         
         // Delete the file from the server after uploading
         try {
@@ -100,7 +100,7 @@ async function uploadToPrintify(apiToken, fileName, imageUrl) {
         }
     };
 
-    console.log("Here is the object I'm sending : "+JSON.stringify(requestBody, null, 4));
+    // console.log("Here is the object I'm sending : "+JSON.stringify(requestBody, null, 4));
 
     try {
         return await axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config); // POST request to Printify
@@ -115,3 +115,50 @@ async function uploadToPrintify(apiToken, fileName, imageUrl) {
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`); // Log the server start and port
 });
+
+
+/*
+
+The behavior you're observing in the console logs is indeed due to the overlapping of multiple asynchronous 
+requests to the /upload endpoint. When multiple files are uploaded simultaneously, each file triggers an 
+independent HTTP POST request to your server. These requests are handled concurrently by Node.js, which 
+can lead to overlapping execution of asynchronous operations. Let me explain this with an example:
+
+Example Scenario:
+Imagine you're uploading three files almost simultaneously to your server:
+
+File A (starts at time T1)
+File B (starts shortly after A, at time T1+Δ)
+File C (starts shortly after B, at time T1+2Δ)
+Each file upload initiates a separate request to the /upload endpoint. Since Node.js is highly efficient 
+at handling I/O operations asynchronously, it doesn't wait for one file to be completely processed before 
+starting with the next one. The requests are processed in parallel.
+
+What Happens in the Server:
+T1: Request for File A arrives. It starts processing.
+T1+Δ: Request for File B arrives. Processing for File A is ongoing, but Node.js starts processing File B concurrently.
+T1+2Δ: Request for File C arrives. Processing for both File A and File B is ongoing. Node.js starts processing File C 
+concurrently.
+In Terms of Your Console Logs:
+Each request executes uploadToPrintify, which immediately logs "Here is the object I'm sending..."
+Right after calling uploadToPrintify, each request logs "The link..."
+Resulting Log Sequence:
+Due to the asynchronous nature and the slight differences in processing times, the logs interleave. You might see 
+something like this:
+
+"Here is the object I'm sending" for File A
+"Here is the object I'm sending" for File B
+"The link" for File A
+"Here is the object I'm sending" for File C
+"The link" for File B
+"The link" for File C
+Why This Happens:
+The "Here is the object I'm sending" log is part of the asynchronous uploadToPrintify function.
+The "The link" log is executed right after the asynchronous call, which doesn't wait for the completion of uploadToPrintify.
+Since the requests are independent, their respective asynchronous operations overlap and interleave.
+Key Takeaway:
+This behavior is a typical characteristic of asynchronous programming in environments like Node.js. It efficiently handles 
+multiple operations concurrently, leading to overlapping execution, especially evident in I/O-bound tasks like handling HTTP 
+requests or performing network operations. 
+
+*/
