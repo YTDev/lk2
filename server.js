@@ -56,43 +56,36 @@ The function body (inside { ... }) contains the code that will be executed when 
 
 
 */
-
-app.post('/upload', upload.array('image'), async (req, res) => {
-    if (!req.files || req.files.length === 0) {
-        return res.status(400).send('No files uploaded.'); // Return error if no files were uploaded
+app.post('/upload', upload.single('image'), async (req, res) =>{
+    if(!req.file){
+        return res.status(400).send('No file uploaded.');
     }
-
-    const apiToken = req.body.apiToken; // Extract API token from request body
+    const apiToken = req.body.apiToken;
     if (!apiToken) {
-        return res.status(400).send('API token is required.'); // Return error if API token is missing
+        return res.status(400).send('API token is required.');
     }
-
     try {
-        // Process each uploaded file
-        const printifyResponses = await Promise.all(req.files.map(async (file) => {
-            const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`; // Create URL for uploaded image
-            const response = await uploadToPrintify(apiToken, file.filename, uploadedImageUrl); // Upload image to Printify
+        const uploadedImageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+        const response = await uploadToPrintify(apiToken, req.file.filename, uploadedImageUrl);
+        console.log(uploadedImageUrl);
+        console.log(response);
+        // Delete the file from the server after uploading
+        try {
+            fs.unlinkSync(req.file.path);
+        } catch (err) {
+            console.error('Error occurred while deleting the file:', err);
+        }
 
-            // Delete the file from the server
-            try {
-                fs.unlinkSync(file.path);
-            } catch (err) {
-                console.error('Error occurred while deleting the file:', err);
-            }
-
-            return response.data; // Return the response data from Printify
-        }));
-
-        // Send response back to client
-        res.send({ 
-            message: 'Images uploaded and files deleted successfully',
-            printifyResponses
+        res.send({
+            message: 'Image uploaded and file deleted successfully',
+            printifyResponse: response.data
         });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).send('Error processing files'); // Handle any errors during processing
+        res.status(500).send('Error processing file');
     }
-});
+})
+
 
 // Function to handle uploading images to Printify
 async function uploadToPrintify(apiToken, fileName, imageUrl) {
@@ -107,12 +100,15 @@ async function uploadToPrintify(apiToken, fileName, imageUrl) {
         }
     };
 
+    console.log("Here is the object I'm sending :"+JSON.stringify(requestBody, null, 4));
+
     try {
         return await axios.post('https://api.printify.com/v1/uploads/images.json', requestBody, config); // POST request to Printify
     } catch (error) {
         console.error('Printify API error:', error.response ? error.response.data : error);
         throw error; // Propagate error for handling upstream
     }
+
 }
 
 // Start the server
