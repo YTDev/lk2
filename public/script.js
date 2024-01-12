@@ -1,18 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
     // Initialize FilePond on a specific input element with custom settings
     const pond = FilePond.create(document.getElementById('imageInput'));
     pond.setOptions({
-
         instantUpload: false, // Disable automatic upload when a file is added
         server: {
             // Define a custom processing function for file uploads
             process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
                 const formData = new FormData(); // Create a new FormData object to hold file data
+                // fieldName is the name of the input field
+                // file is the actual file object to send
                 formData.append(fieldName, file, file.name); // Append the file to the FormData object
 
                 // Append the API token from a separate input field to the FormData
                 formData.append('apiToken', document.getElementById('apiTokenInput').value);
 
+                axios.post('/upload',formData)
+                .then(response => {
+                    load(response.data) // Call FilePond's load method on success
+                })
+                .catch(error =>{
+                    console.error(error);
+                    error("Upload failed");
+                })
+                
+                /*
+                
                 // Create a new XMLHttpRequest to send the FormData to the server
                 const request = new XMLHttpRequest();
                 request.open('POST', '/upload'); // Open a POST request to the '/upload' endpoint
@@ -28,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     error('Upload failed'); // Call FilePond's error method if the request fails
                 };
                 request.send(formData); // Send the FormData to the server
-
+                */
+                
+                
                 // Return an object with an abort function to cancel the upload if needed
                 return {
                     abort: () => {
@@ -58,4 +73,5 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+    
 });
