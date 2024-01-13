@@ -1,21 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+
+/*Reset some default styles*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Basic styling for the body */
+.page {
+    font-family: 'Open Sans', sans-serif;
+    background: #fff;
+    height: 2000px;
+}
+
+
+/* Header styles */
+/*
+0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)
+*/
+.logo__image{
+    display: block;
+    width: 50px;
+}
+.header {
+    width: 100%;
+    position: relative;
+}
+
+.header__announcement-bar {
+    text-align: center;
+    padding: 5px;
+    /* background: #f8f8f8; Give it a distinct background */
+    width: 100%; /* Span across the entire width */
+    height: auto;
+    background-color: #007bff;    
+}
+
+.header__logo-container{
+    padding: 1.3rem 10%;
+    position: fixed;
+    top: auto;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    transition: top 0.3s; /* Smooth transition for moving up */
+}
+
+.header__logo-container::before{
+    content: '';
+    position: absolute;   
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(50px);
+    z-index: -1;
+}
+
+@media (max-width: 992px) {
+    .header__logo-container{
+        padding: 1.3rem 5%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    
+    #chk:checked~.header__menu #open-hmg{
+        display: none;
+    }
+    #chk:checked~.header__menu #close-hmg{
+        display: block;
+    }
+    #close-hmg{
+        display: none;
+    }
+
+    .header .header__menu{
+        display: inline-flex;
+    }
+
+    
+    .header__nav{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background:rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(50px);
+        width: 100%;
+        height: 0rem;
+        overflow: hidden;
+        transition: 0.3s ease;
+    }
+
+    #chk:checked~.header__nav{
+        height: fit-content
+    }
+
+    #close-hmg{
+        display: none;
+    }
+
+    .header__nav .nav__link{
+        display: block;
+        font-size: 1.1rem;
+        margin-left: 0;
+        margin: 1.5rem 0;
+        text-align: center;
+    }
+
+
+}
+/* Add a class for when the navbar should stick to the top */
+.header__logo-container--sticky {
+    top: 0; /* Stick to the top */
+}
+
+.nav__link{
+    color: #5f6368;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+}
+
+.nav__link:hover{
+    color: #202124;
+}
+
+#chk{
+    display: none;
+}
+
+.header__menu{
+    display: none;
+    font-size: 2.8rem;
+    cursor: pointer;
+}
+
+
+
+
+/* pbu-tool section styling */
 
 .filepond--credits{
     display: none;
 }
 
-
-
-/* Overall body styling */
-body {
-    font-family: 'Arial', sans-serif;
+#pbu-tool {
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
+
 }
 
 

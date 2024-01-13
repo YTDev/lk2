@@ -6,13 +6,65 @@
     <!-- FilePond CSS -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
-    <form id="uploadForm" enctype="multipart/form-data">
-        <input type="text" id="apiTokenInput" name="apiToken" placeholder="Enter Printify API Token" required>
-        <input type="file" id="imageInput" accept="image/*" name="image" multiple>
-        <button type="submit" id="uploadButton">Upload Images</button>
-    </form>
+<body class="page">
+    
+    <header class="header">
+        <div class="header__announcement-bar">🚀 Now in Beta! Unleash your creativity with hassle-free bulk uploads to Printify. Learn More!</div>
+        <div class="header__logo-container">
+            <a href="" class="logo">
+                <img src="img/pbu-logo.png" alt="logo" class="logo__image">
+            </a>
+            <input type="checkbox" name="" id="chk">
+            <label for="chk" class="header__menu">
+                <i class='bx bx-menu' id="open-hmg"></i>
+                <i class='bx bx-x' id="close-hmg"></i>
+            </label>
+            <nav class="header__nav">
+                <a href="/" class="nav__link">Home</a>
+                <a href="/features" class="nav__link">Features & How It Works</a>
+                <a href="/updates" class="nav__link">Upcoming Updates</a>
+                <a href="/contact" class="nav__link">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <!-- Hero content here -->
+        </section>
+
+        <section id="features">
+            <!-- Features content here -->
+        </section>
+
+        <section id="pbu-tool">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="text" id="apiTokenInput" name="apiToken" placeholder="Enter Printify API Token" required>
+                <input type="file" id="imageInput" accept="image/*" name="image" multiple>
+                <button type="submit" id="uploadButton">Upload Images</button>
+            </form>
+        </section>
+
+        <section id="testimonials">
+            <!-- Testimonials content here -->
+        </section>
+
+        <section id="partners">
+            <!-- Integration partners content here -->
+        </section>
+
+        <section class="cta">
+            <!-- Call-to-Action content here -->
+        </section>
+    </main>
+
+    <footer>
+        <!-- Footer content here -->
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+    </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>

@@ -33,16 +33,20 @@ app.post(...):
 app is an instance of an Express application.
 .post(...) is a method to define a route for handling POST requests. POST requests are typically 
 used for submitting data to the server.
+
 '/upload':
 
 This is the path or endpoint on your server. When a POST request is made to http://[your-server]/upload, 
 this route will be triggered.
+
 upload.array('image'):
 
 upload is an instance of multer, a middleware for handling multipart/form-data, which is 
 primarily used for uploading files.
 .array('image') tells Multer to accept an array of files, all with the field name 'image'. 
-This means in the incoming POST request, there can be multiple files uploaded under the field name 'image'. For example, in an HTML form, this would correspond to an input like <input type="file" name="image" multiple>.
+This means in the incoming POST request, there can be multiple files uploaded under the field name 'image'. For example, 
+in an HTML form, this would correspond to an input like <input type="file" name="image" multiple>.
+
 async (req, res) => { ... }:
 
 This part defines an asynchronous function that will be executed when the route is matched.
@@ -51,12 +55,15 @@ req (short for "request") is an object containing information about the HTTP req
 triggered the route. It includes things like the body of the request, any parameters, headers, etc.
 res (short for "response") is an object used to send back the desired HTTP response.
 The function body (inside { ... }) contains the code that will be executed when the route is
- accessed. This typically involves processing the uploaded files, performing some actions, 
- and then sending a response back to the client.
-
-
+accessed. This typically involves processing the uploaded files, performing some actions, 
+and then sending a response back to the client.
 */
-app.post('/upload', upload.single('image'), async (req, res) =>{
+
+app.post('/upload', upload.single('image'), async (req, res) => {
+    //upload.single('image') this will run first before moving to the rest of the code, basically
+    //it go to the formData and grab the 'image' and then upload it to the 'uploads' folder 
+    // req.file is the `image` file
+    // req.body will hold the text fields, if there were any
     if(!req.file){
         return res.status(400).send('No file uploaded.');
     }

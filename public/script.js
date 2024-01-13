@@ -1,5 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
+    /*
+
+    It waits for the DOM to be fully loaded.
+    It gets the vertical position of the .header__logo-container with offsetTop.
+    It defines a scrollPage function that adds or removes the .header__logo-container--sticky class
+    based on the current scroll position.
+    It listens for the scroll event on the window and invokes the scrollPage function when the event occurs.
     
+    note: window.pageYOffset is depracted so we use document.documentElement.scrollTop instead.
+
+    */
+    var headerLogoContainer = document.querySelector('.header__logo-container');
+    var stickyOffset = headerLogoContainer.offsetTop;
+    
+    function scrollPage() {
+        if (document.documentElement.scrollTop >= stickyOffset) {
+            headerLogoContainer.classList.add('header__logo-container--sticky');
+        } else {
+            headerLogoContainer.classList.remove('header__logo-container--sticky');
+        }
+    }
+
+    window.addEventListener('scroll', scrollPage);
+
+
+
     // Initialize FilePond on a specific input element with custom settings
     const pond = FilePond.create(document.getElementById('imageInput'));
     pond.setOptions({
