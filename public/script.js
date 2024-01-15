@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function scrollPage() {
         if (document.documentElement.scrollTop >= stickyOffset) {
             headerLogoContainer.classList.add('header__logo-container--sticky');
+            headerLogoContainer.classList.add('header-shadow');
         } else {
             headerLogoContainer.classList.remove('header__logo-container--sticky');
+            headerLogoContainer.classList.remove('header-shadow');
         }
     }
 

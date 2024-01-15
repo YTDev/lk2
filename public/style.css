@@ -16,14 +16,12 @@
 }
 
 
-/* Header styles */
-/*
-0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)
-*/
-.logo__image{
-    display: block;
-    width: 50px;
-}
+/************************************************************
+*                                                            *
+*                       HEADER STYLES                        *
+*                                                            *
+************************************************************/
+
 .header {
     width: 100%;
     position: relative;
@@ -32,10 +30,20 @@
 .header__announcement-bar {
     text-align: center;
     padding: 5px;
-    /* background: #f8f8f8; Give it a distinct background */
-    width: 100%; /* Span across the entire width */
+    width: 100%; 
     height: auto;
     background-color: #007bff;    
+}
+
+.logo__image{
+    display: block;
+    width: 50px;
+}
+
+
+
+.header-shadow{
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
 }
 
 .header__logo-container{
