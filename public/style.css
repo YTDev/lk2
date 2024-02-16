@@ -1,18 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;800&display=swap');
 
 /*Reset some default styles*/
-*{
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
+
+
+:root {
+    /* Global Colors */
+    --primary-color: #202124;
+    --secondary-color: #5f6368;
+    --accent-color: ;
+    --bg-announcemnt: #007bff;
+    --blue:#1a73e8;
+    --bg-footer: #f8f9fa;
+    /* Typography */
+    --font-family: 'Open Sans', sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+  
+    /* Spacing */
+    --spacing-unit: 8px;
+    --container-max-width: 1200px;
+  
+    /* Border Radius */
+    --border-radius: 4px;
+  
+    /* Shadows */
+    --box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+
+  
+    /* Transitions */
+    --transition-duration: 0.3s;
+}
+   
+
 
 
 /* Basic styling for the body */
 .page {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-family);
     background: #fff;
-    height: 2000px;
+    /* height: 2000px; */
 }
 
 
@@ -22,157 +55,320 @@
 *                                                            *
 ************************************************************/
 
-.header {
-    width: 100%;
-    position: relative;
-}
 
-.header__announcement-bar {
+.header__announcement{
+    background: var(--bg-announcemnt);
     text-align: center;
     padding: 5px;
-    width: 100%; 
-    height: auto;
-    background-color: #007bff;    
-}
-
-.logo__image{
-    display: block;
-    width: 50px;
 }
 
 
-
-.header-shadow{
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
-}
-
-.header__logo-container{
-    padding: 1.3rem 10%;
-    position: fixed;
-    top: auto;
-    left: 0;
-    width: 100%;
+.header__main{
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    z-index: 100;
-    transition: top 0.3s; /* Smooth transition for moving up */
+    align-items: center;
+    /* background-color: rgba(0, 200, 57, 0.1); */
+    background-color: #fff;
+    backdrop-filter: blur(50px);  
 }
 
-.header__logo-container::before{
-    content: '';
-    position: absolute;   
-    width: 100%;
-    height: 100%;
+
+.header__main--sticky{
+    position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(50px);
-    z-index: -1;
+    width: 100%;
+    top:0;
 }
 
-@media (max-width: 992px) {
-    .header__logo-container{
-        padding: 1.3rem 5%;
-    }
+
+.header__main--shadow{
+    box-shadow: var(--box-shadow);
 }
 
-@media (max-width: 768px) {
 
-    
-    #chk:checked~.header__menu #open-hmg{
-        display: none;
-    }
-    #chk:checked~.header__menu #close-hmg{
-        display: block;
-    }
-    #close-hmg{
-        display: none;
-    }
-
-    .header .header__menu{
-        display: inline-flex;
-    }
-
-    
-    .header__nav{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background:rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(50px);
-        width: 100%;
-        height: 0rem;
-        overflow: hidden;
-        transition: 0.3s ease;
-    }
-
-    #chk:checked~.header__nav{
-        height: fit-content
-    }
-
-    #close-hmg{
-        display: none;
-    }
-
-    .header__nav .nav__link{
-        display: block;
-        font-size: 1.1rem;
-        margin-left: 0;
-        margin: 1.5rem 0;
-        text-align: center;
-    }
-
-
-}
-/* Add a class for when the navbar should stick to the top */
-.header__logo-container--sticky {
-    top: 0; /* Stick to the top */
-}
-
-.nav__link{
-    color: #5f6368;
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 2.5rem;
-}
-
-.nav__link:hover{
-    color: #202124;
-}
-
-#chk{
+#chkBox{
     display: none;
 }
 
-.header__menu{
-    display: none;
-    font-size: 2.8rem;
+
+.menu{
+    display: inline-flex; /*when I click the menu the height of bar changes*/
+    font-size: 30px;
     cursor: pointer;
 }
 
 
+#menu__close{
+    display: none;
+}
 
 
-/* pbu-tool section styling */
+#chkBox:checked~.menu #menu__close{
+    display: block;
+}
 
+
+#chkBox:checked~.menu #menu__open{
+    display: none;
+}
+
+
+.header__navigation{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* backdrop-filter: blur(50px); */
+    top:100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+}
+
+
+#chkBox:checked~.header__navigation{
+    height: auto;
+}
+
+
+.nav-list{
+    list-style: none;
+    background-color: #fff;
+}
+
+
+.nav-list__item{
+    /* border: 1px solid magenta; */
+    text-align: center;
+}
+
+
+.nav-list__link{
+    display: block;
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+    font-weight: 500;
+}
+
+
+.nav-list__link:hover{
+    color: var(--primary-color);
+}
+
+
+/*
+.nav-list__link::before{
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: aquamarine;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;   
+} 
+*/
+
+
+@media (min-width: 769px){
+    .header__navigation{
+        position: static;
+        height: auto;
+        background-color: transparent;
+    }
+
+
+    .nav-list{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+
+    .menu{
+        display: none;
+    }
+    .nav-list__link{
+        position: relative;
+        
+    }
+
+    .nav-list__link::before{
+        /* For some animation */
+        /* transform: scale(0, 1);
+        transform-origin: left;
+        transition: transform ease-in-out 250ms; */
+        position: absolute;
+        bottom: 0px;
+        content: '';
+        background-color: var(--blue);
+        height: 0px;
+        display: block;
+        width: calc(100% - 20px); /*full width - left/right padding*/
+        
+    }
+
+    .nav-list__link:hover::before{
+        height: 2px;
+        /* transform: scale(1, 1); */
+    }
+
+    .nav-list__list--active{
+        
+    }
+
+}
+
+
+/************************************************************
+*                                                            *
+*                       Hero STYLES                        *
+*                                                            *
+************************************************************/
+
+
+.hero{
+    /* border: 5px solid black; */
+    /* padding: 50px 10px; */
+    padding: 120px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero__title{
+    /* margin-bottom: 10px; */
+    font-weight: 800 ;
+    padding: 10px;
+    font-size: 24px;
+}
+
+.hero__subtitle{
+    padding: 10px;
+    /* margin-bottom: 30px; */
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.hero__btn{
+    border: 0;
+    padding: .5em 1em;
+    font-size: 30px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.hero__btn:hover{
+    opacity: 1;
+}
+
+
+/************************************************************
+*                                                            *
+*                      Feature STYLES                        *
+*                                                            *
+************************************************************/
+
+.feature{
+    padding: 50px 0;
+    text-align: center;
+    
+}
+
+.feature__title{
+    padding: 10px;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.feature__desc{
+    margin-bottom: 25px;
+    width: 900px;
+    max-width: 100%;
+    padding: 10px;
+    margin-inline: auto;
+}
+
+
+.feature__features{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+}
+
+
+.feature-item {
+    padding: 30px;
+    
+    width: 300px;
+    margin: 10px;
+    max-width: 100%;
+    box-shadow: var(--box-shadow);
+}
+
+
+.feature-item__icon{
+    width: 50px;
+    height: 50px;
+    margin-inline: auto;
+    margin-bottom: 10px;
+}
+
+
+.feature-item__title{
+    font-weight: 500;
+    margin-bottom: 30px;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+
+.feature-item__description{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+/************************************************************
+*                                                            *
+*                      PBU STYLES                            *
+*                                                            *
+************************************************************/
 .filepond--credits{
     display: none;
 }
 
-#pbu-tool {
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
+
+.pbu{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex-direction: column;
 }
 
 
+.pbu__title{
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
 
-/* Styling the form */
+
+.pbu__desc{
+    margin-bottom: 25px;
+    width: 900px;
+    max-width: 100%;
+    padding: 10px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+
 #uploadForm {
     background-color: #fff;
     padding: 20px;
@@ -180,11 +376,12 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    margin-bottom: 100px;
 }
 
-/* Styling input fields */
+
 #apiTokenInput
- {
+{
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -193,20 +390,17 @@
     box-sizing: border-box;
 }
 
-/* Adding focus effect to inputs */
 #apiTokenInput:focus
-
 {
     outline: none;
     border-color: #007bff;
 }
 
-/* Styling the placeholder */
 #uploadButton::placeholder {
     color: #999;
 }
 
-/* Styling the submit button */
+
 #uploadButton{
     width: 100%;
     padding: 10px;
@@ -218,7 +412,221 @@
     font-size: 16px;
 }
 
-/* Button hover effect */
 #uploadButton:hover {
     background-color: #0056b3;
 }
+
+
+
+/************************************************************
+*                                                            *
+*                       Testimonials STYLES                  *
+*                                                            *
+************************************************************/
+
+.testimonials__title{
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.testimonials__desc{
+    margin-bottom: 25px;
+    width: 900px;
+    max-width: 100%;
+    padding: 10px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+
+
+.testimonials__slider {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+    /* height: 350px; */
+}
+
+
+@media (min-width: 769px){
+    .testimonials__slider {
+        max-width: 700px;
+    }
+}
+
+
+
+.testimonials-list {
+    display: flex;
+    overflow: hidden;
+}
+
+.testimonial {
+    width: 100%;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.testimonial__quote {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.testimonial__user {
+    font-size: 14px;
+    color: #888;
+}
+
+#prevBtn,
+#nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: #333;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+
+
+
+
+
+/* pbu-tool section styling */
+
+
+/*
+#pbu-tool {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+*/
+
+/* Styling the form */
+/*
+#uploadForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+*/
+/* Styling input fields */
+/*
+#apiTokenInput
+ {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+*/
+/* Adding focus effect to inputs */
+/*
+#apiTokenInput:focus
+
+{
+    outline: none;
+    border-color: #007bff;
+}
+*/
+/* Styling the placeholder */
+/*
+#uploadButton::placeholder {
+    color: #999;
+}
+*/
+/* Styling the submit button */
+/*
+#uploadButton{
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+*/
+/* Button hover effect */
+/*
+#uploadButton:hover {
+    background-color: #0056b3;
+}
+*/
+
+/************************************************************
+*                                                            *
+*                       Footer STYLES                        *
+*                                                            *
+************************************************************/
+
+.footer{
+    background-color: var(--bg-footer);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__link{
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+    font-weight: 500;
+}
+
+.footer__link:hover{
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+@media (min-width: 769px){
+    .footer{
+        padding: 50px;
+        flex-direction: row;
+    }
+}
+
+
+
+

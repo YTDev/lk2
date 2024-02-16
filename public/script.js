@@ -10,20 +10,39 @@ document.addEventListener('DOMContentLoaded', function () {
     note: window.pageYOffset is depracted so we use document.documentElement.scrollTop instead.
 
     */
-    var headerLogoContainer = document.querySelector('.header__logo-container');
-    var stickyOffset = headerLogoContainer.offsetTop;
+        /*
+
+    It waits for the DOM to be fully loaded.
+    It gets the vertical position of the .header__logo-container with offsetTop.
+    It defines a scrollPage function that adds or removes the .header__logo-container--sticky class
+    based on the current scroll position.
+    It listens for the scroll event on the window and invokes the scrollPage function when the event occurs.
     
+    note: window.pageYOffset is depracted so we use document.documentElement.scrollTop instead.
+
+    */
+    let headerLogoContainer = document.querySelector('.header__main');
+    let stickyOffset = headerLogoContainer.offsetTop;
+   
     function scrollPage() {
+        
+        
         if (document.documentElement.scrollTop >= stickyOffset) {
-            headerLogoContainer.classList.add('header__logo-container--sticky');
-            headerLogoContainer.classList.add('header-shadow');
+            headerLogoContainer.classList.add('header__main--sticky');
+            headerLogoContainer.classList.add('header__main--shadow');
         } else {
-            headerLogoContainer.classList.remove('header__logo-container--sticky');
-            headerLogoContainer.classList.remove('header-shadow');
+            headerLogoContainer.classList.remove('header__main--sticky');
+            headerLogoContainer.classList.remove('header__main--shadow');
         }
     }
 
     window.addEventListener('scroll', scrollPage);
+
+
+
+
+
+    
 
 
 
@@ -102,3 +121,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
 });
+
+
+
+
+/*slider */
+let currentTestimonial = 0;
+function showTestimonial(index) {
+    const testimonials = document.querySelectorAll('.testimonial');
+    if (index < 0) {
+        currentTestimonial = testimonials.length - 1;
+    } else if (index >= testimonials.length) {
+        currentTestimonial = 0;
+    } else {
+        currentTestimonial = index;
+    }
+
+    testimonials.forEach((testimonial, idx) => {
+        testimonial.style.display = idx === currentTestimonial ? 'block' : 'none';
+    });
+}
+
+function prevTestimonial() {
+    showTestimonial(currentTestimonial - 1);
+}
+
+function nextTestimonial() {
+    showTestimonial(currentTestimonial + 1);
+}
+
+// Initial display
+showTestimonial(currentTestimonial);
