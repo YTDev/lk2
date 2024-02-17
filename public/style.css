@@ -277,6 +277,7 @@
 .feature{
     padding: 50px 0;
     text-align: center;
+    margin-bottom: 100px;
     
 }
 
@@ -348,6 +349,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 100px;
 }
 
 
@@ -423,6 +425,10 @@
 *                       Testimonials STYLES                  *
 *                                                            *
 ************************************************************/
+.testimonials{
+    margin-bottom: 100px;
+}
+
 
 .testimonials__title{
     font-weight: 800;
@@ -516,81 +522,71 @@
 
 
 
+/************************************************************
+*                                                            *
+*                      integration STYLES                    *
+*                                                            *
+************************************************************/
+.integration{
+    margin-bottom: 100px;
+}
 
 
+.integration__title{
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
 
-/* pbu-tool section styling */
 
+.integration__subtitle{
+    margin-bottom: 25px;
+    width: 900px;
+    max-width: 100%;
+    padding: 10px;
+    margin-inline: auto;
+    text-align: center;
+}
 
-/*
-#pbu-tool {
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
+.integration__partners{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-}
-
-*/
-
-/* Styling the form */
-/*
-#uploadForm {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-}
-*/
-/* Styling input fields */
-/*
-#apiTokenInput
- {
-    width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
 }
-*/
-/* Adding focus effect to inputs */
-/*
-#apiTokenInput:focus
 
-{
-    outline: none;
-    border-color: #007bff;
-}
-*/
-/* Styling the placeholder */
-/*
-#uploadButton::placeholder {
-    color: #999;
-}
-*/
-/* Styling the submit button */
-/*
-#uploadButton{
+
+.partner{
+    
+    max-width: 700px;
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+    text-align: center;
+    margin-bottom: 50px;
 }
-*/
-/* Button hover effect */
-/*
-#uploadButton:hover {
-    background-color: #0056b3;
+
+.partner__logo{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    /* display: block;
+    max-width: 100%; */
+    
 }
-*/
+
+
+.partner__title{
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.partner{
+    font-weight: 300
+}
+
+
 
 /************************************************************
 *                                                            *
