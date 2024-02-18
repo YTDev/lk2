@@ -158,34 +158,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
-/*slider */
-/*
-let currentTestimonial = 0;
-function showTestimonial(index) {
-    const testimonials = document.querySelectorAll('.testimonial');
-    if (index < 0) {
-        currentTestimonial = testimonials.length - 1;
-    } else if (index >= testimonials.length) {
-        currentTestimonial = 0;
-    } else {
-        currentTestimonial = index;
-    }
-
-    testimonials.forEach((testimonial, idx) => {
-        testimonial.style.display = idx === currentTestimonial ? 'block' : 'none';
-    });
-}
-
-function prevTestimonial() {
-    showTestimonial(currentTestimonial - 1);
-}
-
-function nextTestimonial() {
-    showTestimonial(currentTestimonial + 1);
-}
-
-// Initial display
-showTestimonial(currentTestimonial);
-*/
