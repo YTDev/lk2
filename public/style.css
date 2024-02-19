@@ -231,20 +231,23 @@ html{
 
 
 .hero{
-    /* border: 5px solid black; */
-    /* padding: 50px 10px; */
+    
     padding: 120px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100vh;
+    
 }
 
 .hero__title{
-    /* margin-bottom: 10px; */
-    font-weight: 800 ;
+    
     padding: 10px;
-    font-size: 24px;
+
+    font-size: 60px;
+    line-height: 72px;
+    
 }
 
 .hero__subtitle{
@@ -278,16 +281,20 @@ html{
 ************************************************************/
 
 .feature{
-    padding: 50px 0;
-    text-align: center;
-    margin-bottom: 100px;
     
+    text-align: center;
+    
+    padding: 20px;
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
 .feature__title{
     padding: 10px;
-    font-weight: 800;
-    font-size: 20px;
+    
+    font-weight: 500;
+    font-size: 36px;
+    color: #202124;
 }
 
 .feature__desc{
@@ -325,10 +332,13 @@ html{
 
 
 .feature-item__title{
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #202124;
     margin-bottom: 30px;
-    white-space: nowrap;
-    font-size: 16px;
+    /* white-space: nowrap; */
+    
 }
 
 
@@ -352,13 +362,18 @@ html{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 100px;
+    
+    /* background-color: #ebebeb; */
+    padding: 20px;
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
 
 .pbu__title{
-    font-weight: 800;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 36px;
+    color: #202124;
     text-align: center;
     padding: 10px;
 }
@@ -429,15 +444,21 @@ html{
 *                                                            *
 ************************************************************/
 .testimonials{
-    margin-bottom: 100px;
+    padding: 20px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    /* background-color: #0056b3; */
 }
 
 
 .testimonials__title{
-    font-weight: 800;
-    font-size: 20px;
+    
+    font-weight: 500;
+    font-size: 36px;
+    color: #202124;
     text-align: center;
     padding: 10px;
+    
 }
 
 .testimonials__desc{
@@ -533,15 +554,21 @@ html{
 *                                                            *
 ************************************************************/
 .integration{
-    margin-bottom: 100px;
+    padding: 20px;
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
 
 .integration__title{
-    font-weight: 800;
-    font-size: 20px;
+    /* font-weight: 800;
+    font-size: 20px; */
     text-align: center;
     padding: 10px;
+    font-size: 36px;
+    color: #202124;
+    font-weight: 500;
+    
 }
 
 
@@ -676,8 +703,9 @@ html{
 ************************************************************/
 
 .contact-us {
-    padding: 20px;
+    
     background-color: #fff;
+    padding: 20px;
     padding-top: 100px;
     padding-bottom: 50px;
 }
@@ -688,7 +716,8 @@ html{
 }
 
 .contact-us__title {
-    font-size: 1.8rem;
+    font-weight: 400;
+    font-size: 36px;
     color: #202124;
     text-align: center;
     margin-bottom: 15px;
