@@ -1,4 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    /**scrolling effects when clicking get started */
+
+    const getStartedBtn = document.querySelector('.hero__btn');
+    const sectionToScrollTo = document.getElementById('pbu');
+  
+    getStartedBtn.addEventListener('click', function() {
+      sectionToScrollTo.scrollIntoView({ behavior: 'smooth' });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
 
     It waits for the DOM to be fully loaded.

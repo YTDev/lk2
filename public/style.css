@@ -241,20 +241,18 @@ html{
     
 }
 
-.hero__title{
-    
+.hero__title{   
     padding: 10px;
-
-    font-size: 60px;
-    line-height: 72px;
-    
+    font-size: 36px;
+    line-height: 40px;
 }
 
 .hero__subtitle{
     padding: 10px;
     /* margin-bottom: 30px; */
-    font-size: 24px;
+    /*  */
     margin-bottom: 30px;
+    font-size: 18px;
 }
 
 .hero__btn{
@@ -273,6 +271,16 @@ html{
     opacity: 1;
 }
 
+
+@media (min-width: 769px){
+    .hero__title{
+        font-size: 60px;
+        line-height: 72px;
+    }
+    .hero__subtitle{
+        font-size: 24px;
+    }
+}
 
 /************************************************************
 *                                                            *
@@ -293,7 +301,7 @@ html{
     padding: 10px;
     
     font-weight: 500;
-    font-size: 36px;
+    font-size: 26px;
     color: #202124;
 }
 
@@ -347,73 +355,75 @@ html{
     font-size: 20px;
 }
 
+
+@media (min-width: 769px) {
+    .feature__title{
+        font-size: 36px;
+    }
+}
 /************************************************************
 *                                                            *
 *                      PBU STYLES                            *
 *                                                            *
 ************************************************************/
-.filepond--credits{
+.filepond--credits {
     display: none;
 }
 
-
-.pbu{
+.pbu {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    
-    /* background-color: #ebebeb; */
-    padding: 20px;
-    padding-top: 100px;
-    padding-bottom: 50px;
-}
+    align-items: center;
+    /* Center items on mobile */
 
-
-.pbu__title{
-    font-weight: 500;
-    font-size: 36px;
-    color: #202124;
-    text-align: center;
-    padding: 10px;
-}
-
-
-.pbu__desc{
-    margin-bottom: 25px;
-    width: 900px;
-    max-width: 100%;
-    padding: 10px;
-    margin-inline: auto;
-    text-align: center;
-}
-
-
-#uploadForm {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+    /* Space between content and form */
     width: 100%;
-    max-width: 400px;
-    margin-bottom: 100px;
+    /* Ensures the section takes full width of its container */
+    max-width: 1200px;
+    /* Sets a maximum width to prevent the content from stretching too far on large screens */
+    margin: auto;
+    /* Centers the section within its container */
+    background-color: #0056b3;
+    padding: 50px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    color: #fff;
+    
 }
 
+.pbu__content,
+#uploadForm {
+    width: 100%;
+    /* Full width on mobile */
+}
 
-#apiTokenInput
-{
+/* Basic styling for text and form elements for better appearance */
+.pbu__title {
+    font-size: 20px;
+    /* Slightly smaller font size for mobile */
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.pbu__desc {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#apiTokenInput {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #f1f0ef;
 }
 
-#apiTokenInput:focus
-{
+#apiTokenInput:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #ffffff;
 }
 
 #uploadButton::placeholder {
@@ -421,7 +431,7 @@ html{
 }
 
 
-#uploadButton{
+#uploadButton {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -435,6 +445,38 @@ html{
 #uploadButton:hover {
     background-color: #0056b3;
 }
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    .pbu {
+        flex-direction: row;
+        /* Side-by-side layout on larger screens */
+        justify-content: space-between;
+        /* Distribute space between content and form */
+        align-items: flex-start;
+        /* Align items at the start */
+
+    }
+
+    .pbu__content,
+    #uploadForm {
+        flex: 1;
+        /* Allow both to grow equally */
+        min-width: 300px;
+        /* Prevent them from getting too narrow */
+        max-width: 50%;
+        /* Limit width to avoid overly wide elements */
+    }
+
+    .pbu__title {
+        font-size: 26px;
+        
+        /* Larger font size for desktop */
+    }
+}
+  
+
+
 
 
 
