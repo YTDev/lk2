@@ -47,10 +47,19 @@ html{
 /* Basic styling for the body */
 .page {
     font-family: var(--font-family);
-    background: #fff;
+    
     /* height: 2000px; */
+    /* max-width: 1400px; 
+    margin: 0 auto; */
 }
 
+.main{
+    background-color: #e6f3fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
 
 /************************************************************
 *                                                            *
@@ -63,17 +72,30 @@ html{
     background: var(--bg-announcemnt);
     text-align: center;
     padding: 5px;
+    
 }
 
 
 .header__main{
+    width: 100%;
+    background-color: #fff;
+}
+
+.header__content{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
-    backdrop-filter: blur(50px);  
+    
+    backdrop-filter: blur(50px); 
+    max-width: 1400px;
+    margin: 0 auto; /* Centers the .header__main content horizontally */ 
 }
 
+
+
+.header__logo{
+    width: 100px;
+}
 
 .header__main--sticky{
     position: fixed;
@@ -120,13 +142,13 @@ html{
 .header__navigation{
     position: absolute;
     background-color: rgba(255, 255, 255, 0.1);
-    /* backdrop-filter: blur(50px); */
+    backdrop-filter: blur(50px);
     top:100%;
     left: 0;
     width: 100%;
     height: 0;
     overflow: hidden;
-     
+    
 }
 
 
@@ -142,7 +164,7 @@ html{
 
 
 .nav-list__item{
-    /* border: 1px solid magenta; */
+    
     text-align: center;
 }
 
@@ -162,18 +184,7 @@ html{
 }
 
 
-/*
-.nav-list__link::before{
-    content: '';
-    display: block;
-    position: absolute;
-    background-color: aquamarine;
-    bottom: 0;
-    left: 0;
-    height: 5px;
-    width: 100%;   
-} 
-*/
+
 
 
 @media (min-width: 769px){
@@ -181,6 +192,7 @@ html{
         position: static;
         height: auto;
         background-color: transparent;
+        
     }
 
 
@@ -231,17 +243,28 @@ html{
 
 
 .hero{
-    
-    padding: 120px 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    
+    padding: 120px 10px;
+    height: 100vh; 
+    max-width: 1400px;
 }
 
+.hero__img{
+    background-image: url('img/hero-img-t.png');
+    background-size: contain;/*contain will ensure the entire image is visible*/
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; /* Full width */
+    height: 300px; /* Adjust based on your needs */
+}
+
+
 .hero__title{   
+    font-weight: bold;
+    color: #001f3f;
     padding: 10px;
     font-size: 36px;
     line-height: 40px;
@@ -249,36 +272,66 @@ html{
 
 .hero__subtitle{
     padding: 10px;
-    /* margin-bottom: 30px; */
-    /*  */
     margin-bottom: 30px;
     font-size: 18px;
 }
 
 .hero__btn{
-    border: 0;
-    padding: .5em 1em;
-    font-size: 30px;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    opacity: 0.8;
+
+    font-size: 20px; /* Adjusted for readability */
+    padding: 12px 24px; /* Symmetrical padding for visual balance */
+    background-color: #007bff; /* A vibrant blue that stands out yet aligns with the color scheme */
+    color: #ffffff; /* White text for high contrast and readability */
+    border: none; /* Clean, modern look */
+    border-radius: 4px; /* Slightly rounded edges for a modern, friendly appearance */
+    cursor: pointer; /* Indicates the element is clickable */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for interaction feedback */
+    text-align: center; /* Ensures text is centered, adding to the symmetrical appearance */
+    display: inline-block; /* Allows the use of margin and padding for positioning */
+    text-decoration: none; /* Removes underline from any text links styled as buttons */
+    margin-left: 10px;
     
 }
 
 .hero__btn:hover{
-    opacity: 1;
+    background-color: #0056b3; /* A darker blue for hover/focus state, maintaining contrast */
+    color: #ffffff; /* Keeps text color consistent for readability */
+    transform: scale(1.05); /* Slight increase in size for interactive feedback */
+    outline: none; /* Preferably manage focus styles in a way that maintains accessibility */
 }
 
 
 @media (min-width: 769px){
+    .hero{
+        flex-direction: row;
+    }
+
+    .hero__content{
+        flex-basis: 50%;
+    }
+
+    .hero__img{
+        
+        flex-basis: 50%;
+    }
+
     .hero__title{
         font-size: 60px;
         line-height: 72px;
     }
+
     .hero__subtitle{
         font-size: 24px;
+    }
+
+}
+
+@media (min-width:1100px) {
+    .hero__img{
+        background-size: cover;
+        background-position: center;
+        min-height: 400px;
+        
     }
 }
 
@@ -289,9 +342,7 @@ html{
 ************************************************************/
 
 .feature{
-    
     text-align: center;
-    
     padding: 20px;
     padding-top: 100px;
     padding-bottom: 50px;
@@ -299,7 +350,6 @@ html{
 
 .feature__title{
     padding: 10px;
-    
     font-weight: 500;
     font-size: 26px;
     color: #202124;
@@ -307,8 +357,8 @@ html{
 
 .feature__desc{
     margin-bottom: 25px;
-    width: 900px;
-    max-width: 100%;
+    max-width: 900px;
+    width: 100%;
     padding: 10px;
     margin-inline: auto;
 }
@@ -316,6 +366,7 @@ html{
 
 .feature__features{
     display: flex;
+    
     justify-content: center;
     flex-wrap: wrap; /* Allow items to wrap to the next line */
 }
@@ -324,7 +375,8 @@ html{
 .feature-item {
     padding: 30px;
     
-    width: 300px;
+    
+    width: 100%;
     margin: 10px;
     max-width: 100%;
     box-shadow: var(--box-shadow);
@@ -359,6 +411,9 @@ html{
 @media (min-width: 769px) {
     .feature__title{
         font-size: 36px;
+    }
+    .feature-item {
+        max-width: 300px;
     }
 }
 /************************************************************
@@ -505,8 +560,8 @@ html{
 
 .testimonials__desc{
     margin-bottom: 25px;
-    width: 900px;
-    max-width: 100%;
+    max-width: 900px;
+    width: 100%;
     padding: 10px;
     margin-inline: auto;
     text-align: center;
@@ -517,9 +572,9 @@ html{
 .testimonials__slider {
     position: relative;
     max-width: 400px;
+    width: 100%;
     margin: 0 auto;
-    /* border: 1px solid black; */
-    /* height: 350px; */
+    
 }
 
 
@@ -603,8 +658,7 @@ html{
 
 
 .integration__title{
-    /* font-weight: 800;
-    font-size: 20px; */
+    
     text-align: center;
     padding: 10px;
     font-size: 36px;
@@ -616,8 +670,8 @@ html{
 
 .integration__subtitle{
     margin-bottom: 25px;
-    width: 900px;
-    max-width: 100%;
+    max-width: 900px;
+    width: 100%;
     padding: 10px;
     margin-inline: auto;
     text-align: center;
