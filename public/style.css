@@ -52,7 +52,7 @@ html {
 .page {
     font-family: var(--font-family);
     background: #fff;
-    /* height: 2000px; */
+    
 }
 
 
@@ -64,9 +64,11 @@ html {
 
 
 .header__announcement {
-    background: var(--bg-announcemnt);
+    background: var(--hero-bg);
     text-align: center;
     padding: 5px;
+    color: #fff;
+    font-size: 11px;
 }
 
 
@@ -83,6 +85,8 @@ html {
 .header__logo{
     width: 100px;
 }
+
+
 .header__main--sticky {
     position: fixed;
     top: 0;
@@ -186,6 +190,10 @@ html {
 
 
 @media (min-width: 769px) {
+    .header__announcement{
+        font-size: 15px;
+    }
+    
     .header__navigation {
         position: static;
         height: auto;
