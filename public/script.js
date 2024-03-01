@@ -133,10 +133,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+    // The how it works tabs sections
 
       
-
+    document.querySelectorAll('.tabs__button').forEach(button => {
+        button.addEventListener('click', () => {
+            const sideMenu = button.parentElement;
+            const tabsContainer = sideMenu.parentElement;
+            const tabNumber = button.dataset.tabTarget;
+            const tabToActivate = tabsContainer.querySelector(tabNumber);
+    
+            sideMenu.querySelectorAll('.tabs__button').forEach(button => {
+                button.classList.remove('tabs__button--active');
+            });
+    
+            tabsContainer.querySelectorAll('.tabs__pane').forEach(tab => {
+                tab.classList.remove('tabs__pane--active');
+            });
+    
+            button.classList.add('tabs__button--active');
+            tabToActivate.classList.add('tabs__pane--active');
+        });
+    });
+    
 
 
     // Initialize FilePond on a specific input element with custom settings

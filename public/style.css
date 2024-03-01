@@ -14,6 +14,9 @@
     /* Global Colors */
     --hero-bg: #1f2431;
     --light-fc: #eef2f9;
+    --section-title-color: #4c4e53;
+    --work-bg:#443A65;
+
 
 
     --primary-color: #202124;
@@ -55,7 +58,27 @@ html {
     
 }
 
+.section-title{
+    color: var(--section-title-color);
+    text-align: center;
+    font-size: 2em;
+    font-weight: 400;
+    margin-bottom: 1.5em;
+}
 
+.section-desc{
+    max-width: 24em;
+    width: 100%;
+    text-align: center;
+    color: var(--section-title-color);
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.section{
+    padding-top: 64px;
+    padding-bottom: 112px;
+}
 /************************************************************
 *                                                            *
 *                       HEADER STYLES                        *
@@ -64,7 +87,7 @@ html {
 
 
 .header__announcement {
-    background: var(--hero-bg);
+    background: #000;
     text-align: center;
     padding: 5px;
     color: #fff;
@@ -193,7 +216,7 @@ html {
     .header__announcement{
         font-size: 15px;
     }
-    
+
     .header__navigation {
         position: static;
         height: auto;
@@ -423,28 +446,18 @@ html {
 ************************************************************/
 
 .feature {
-
+    background: linear-gradient(0deg, #f1f4f9, #fff 10em);
     text-align: center;
-
-    padding: 20px;
-    padding-top: 100px;
-    padding-bottom: 50px;
 }
 
 .feature__title {
-    padding: 10px;
-
-    font-weight: 500;
-    font-size: 26px;
-    color: #202124;
+    
+    
 }
 
 .feature__desc {
-    margin-bottom: 25px;
-    width: 900px;
-    max-width: 100%;
-    padding: 10px;
     margin-inline: auto;
+    margin-bottom: 20px;
 }
 
 
@@ -458,7 +471,6 @@ html {
 
 .feature-item {
     padding: 30px;
-
     width: 300px;
     margin: 10px;
     max-width: 100%;
@@ -488,12 +500,123 @@ html {
 .feature-item__description {
     font-weight: 300;
     font-size: 20px;
+    color: var(--section-title-color);
 }
 
 
 @media (min-width: 769px) {
     .feature__title {
-        font-size: 36px;
+        
+    }
+}
+
+
+/************************************************************
+*                                                            *
+*                      How-it-works STYLES                   *
+*                                                            *
+************************************************************/
+
+.how-it-works{
+    
+    /* background-color: #f2f5fa; */
+}
+
+.how-it-works__intro{
+    margin-inline: auto;
+    margin-bottom: 40px;
+    padding: 10px;
+    
+}
+
+.tabs {
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+    
+    
+}
+
+.tabs__controls {
+    display: flex;
+    /* background: var(--hero-bg); */
+    background-color: #645cec;
+    padding: 10px;
+    border-radius: 25px 25px 0 0;
+    
+}
+
+.tabs__icon{
+    display: block;
+    max-width: 50px;
+    width: 100%;
+    height: auto;
+    
+}
+
+.tabs__button {
+    flex: 1;
+    padding: 30px 10px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+    background: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    color: #fff;
+    opacity: .7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.tabs__button:hover, .tabs__button--active {
+    opacity: 1;
+}
+
+.tabs__content {
+    padding: 40px 20px;
+    /* background-color: #fff; */
+}
+
+.tabs__pane {
+    display: none;
+    height: 400px;
+}
+
+.tabs__pane--active {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+
+    gap: 20px;
+}
+.tabs__pane-content, .tabs__pane-image {
+    flex: 1; /* Both the content and image take up equal space */
+}
+
+.tabs__pane-image img {
+    width: 100%; /* Make the image fill the container */
+    max-width: 300px; 
+    height: auto; /* Keep the image aspect ratio */
+}
+
+.tabs__text{
+    /* font-weight: 300; */
+}
+
+@media (min-width: 769px) {
+    .tabs__pane--active{
+        flex-direction: row;
+    }
+
+    .tabs{
+        max-width: 900px;
+        width: 100%;
     }
 }
 
@@ -519,12 +642,7 @@ html {
     max-width: 1200px;
     /* Sets a maximum width to prevent the content from stretching too far on large screens */
     margin: auto;
-    /* Centers the section within its container */
-    background-color: #0056b3;
-    padding: 50px;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    color: #fff;
+    height: 100vh;
 
 }
 
