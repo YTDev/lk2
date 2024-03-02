@@ -17,33 +17,36 @@
           🚀 Printify's Bulk Uploader is now in Beta! Simplify your uploads 🌟 
         </div>
         <div class="header__main">
-          <a href="" class="header__logo-link">
-            <img src="img/pbu-logo.png" alt="logo" class="header__logo">
-          </a>
-          <input type="checkbox" name="" id="chkBox">
-          <label for="chkBox" class="menu">
-            <!-- here  use ids, classes you face specifity issues -->
-              <i class='bx bx-menu' id="menu__open"></i>
-              <i class='bx bx-x' id="menu__close"></i>
-          </label>
-          <nav class="header__navigation">
-            <!--                its better if we use ul and li 
-  beacause of the little hover effect of the nav links -->
-            <ul class="nav-list">
-              <li class="nav-list__item nav-list__item--active">
-                <a href="/" class="nav-list__link">Home</a>
-              </li>
-              <li class="nav-list__item">
-                <a href="#features" class="nav-list__link">Features & How It Works</a>
-              </li>
-              <li class="nav-list__item">
-                <a href="#updates" class="nav-list__link">Upcoming Updates</a>
-              </li>
-              <li class="nav-list__item">
-                <a href="#contact" class="nav-list__link">Contact Us</a>
-              </li>
-            </ul>
-          </nav>
+          <div class="header__main-container">
+            <a href="" class="header__logo-link">
+              <img src="img/pbu-logo.png" alt="logo" class="header__logo">
+            </a>
+            <input type="checkbox" name="" id="chkBox">
+            <label for="chkBox" class="menu">
+              <!-- here  use ids, classes you face specifity issues -->
+                <i class='bx bx-menu' id="menu__open"></i>
+                <i class='bx bx-x' id="menu__close"></i>
+            </label>
+            <nav class="header__navigation">
+              <!--                its better if we use ul and li 
+    beacause of the little hover effect of the nav links -->
+              <ul class="nav-list">
+                <li class="nav-list__item nav-list__item--active">
+                  <a href="/" class="nav-list__link">Home</a>
+                </li>
+                <li class="nav-list__item">
+                  <a href="#features" class="nav-list__link">Features & How It Works</a>
+                </li>
+                <li class="nav-list__item">
+                  <a href="#updates" class="nav-list__link">Upcoming Updates</a>
+                </li>
+                <li class="nav-list__item">
+                  <a href="#contact" class="nav-list__link">Contact Us</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          
         </div>
     </header>
     
@@ -178,22 +181,23 @@
                 </div>
             </div>
             
-              
-              
           </div>
         </section>
   
-        <section class="section pbu" id="pbu">
-          <div class="pbu__content">
-            <h1  class="pbu__title">Your Gateway to Easy Uploads</h1>
-            <p class="pbu__desc">Experience the PBU Tool - a user-friendly interface that revolutionizes how you upload designs. Start by entering your API key, then simply drag and drop your designs. It's that simple!</p>
-            
+        <section class="section" id="pbu">
+          <div class="section-container pbu">
+            <div class="pbu__content">
+              <h1  class="pbu__title">Your Gateway to Easy Uploads</h1>
+              <p class="pbu__desc">Experience the PBU Tool - a user-friendly interface that revolutionizes how you upload designs. Start by entering your API key, then simply drag and drop your designs. It's that simple!</p>
+              
+            </div>
+            <form id="uploadForm" enctype="multipart/form-data">
+              <input type="text" id="apiTokenInput" name="apiToken" placeholder="Enter Printify API Token" required>
+              <input type="file" id="imageInput" accept="image/*" name="image" multiple>
+              <button type="submit" id="uploadButton" >Upload Images</button>
+            </form>
           </div>
-          <form id="uploadForm" enctype="multipart/form-data">
-            <input type="text" id="apiTokenInput" name="apiToken" placeholder="Enter Printify API Token" required>
-            <input type="file" id="imageInput" accept="image/*" name="image" multiple>
-            <button type="submit" id="uploadButton">Upload Images</button>
-          </form>
+          
         </section>
         
   
