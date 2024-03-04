@@ -19,7 +19,7 @@
     --tabs-bg:#645cec;
     --primary-btn-bg:#2979FF;
     --testi-section: #f1f4f9;
-
+    --updates-bg: linear-gradient(#f1f4f9, #fff 10em);
 
     --primary-color: #202124;
     --secondary-color: #5f6368;
@@ -652,7 +652,7 @@ html {
 
 
 #pbu{
-    background: url("img/rt5.jpg");
+    background: url("img/pbu-bg.jpg");
     background-position: center;
     background-size: cover;
     /* background-blend-mode: luminosity;
@@ -1034,17 +1034,14 @@ html {
 ************************************************************/
 
 .upcoming-updates {
-    padding: 20px;
-    padding-top: 100px;
-    padding-bottom: 50px;
-    background-color: var(--bg-footer)
+    padding-top: 8em;
+    background: var(--updates-bg);
 }
 
 .upcoming-updates__title {
-    font-size: 1.5rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 50px;
+    
+    
+    
 }
 
 .upcoming-updates__item {
@@ -1112,9 +1109,7 @@ html {
 .contact-us {
 
     background-color: #fff;
-    padding: 20px;
-    padding-top: 100px;
-    padding-bottom: 50px;
+    
 }
 
 .contact-us__container {
