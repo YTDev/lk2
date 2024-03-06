@@ -20,7 +20,7 @@
     --primary-btn-bg:#2979FF;
     --testi-section: #f1f4f9;
     --updates-bg: linear-gradient(#f1f4f9, #fff 10em);
-
+    --footer-bg:#f1f4f9;;
     --primary-color: #202124;
     --secondary-color: #5f6368;
     --accent-color: ;
@@ -1193,19 +1193,24 @@ html {
 ************************************************************/
 
 .footer {
-    background-color: var(--bg-footer);
+    background: var(--footer-bg);
     padding: 20px;
+    
+}
+
+.footer__links{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
+
+
 .footer__link {
     color: var(--secondary-color);
     text-decoration: none;
     padding: 10px;
-    position: relative;
     font-weight: 500;
 }
 
@@ -1213,9 +1218,36 @@ html {
     color: var(--primary-color);
     text-decoration: underline;
 }
+.footer__socials-title{
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.footer__socials{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.footer__icon-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__icon-link{
+    
+    display: block;
+    width: 32px;
+    padding: 5px;
+}
+
+.footer__icon-link svg{
+    fill: var(--secondary-color);
+}
 
 @media (min-width: 769px) {
-    .footer {
+    .footer__links {
         padding: 50px;
         flex-direction: row;
     }
