@@ -1044,20 +1044,26 @@ html {
     
 }
 
+.upcoming-updates__list{
+    margin-top: 5rem;
+}
+
 .upcoming-updates__item {
     margin-bottom: 20px;
 }
 
 .upcoming-updates__item-title {
-    font-size: 1.2rem;
-    color: #007bff;
+    font-size: .9rem;
+    color: var(--section-title-color);
     margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .upcoming-updates__item-description {
-    font-size: 1rem;
-    color: #666;
+    font-size: .9rem;
+    color: #606368;
     line-height: 1.6;
+    font-weight: 300;
 }
 
 /* Larger screens */
@@ -1072,11 +1078,11 @@ html {
     }
 
     .upcoming-updates__item-title {
-        font-size: 1.5rem;
+        /* font-size: 1.5rem; */
     }
 
     .upcoming-updates__item-description {
-        font-size: 1.2rem;
+        /* font-size: 1.2rem; */
     }
 }
 
