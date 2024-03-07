@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     particlesJS("particles-js", {
         particles: {
           number: { value: 80, density: { enable: true, value_area: 800 } },
-          color: { value: "#2979FF" }, //This property defines the color of the particles
+          color: { value: "#FFF" }, //This property defines the color of the particles
           shape: {
             type: "circle",
             stroke: { width: 0, color: "#000000" },
