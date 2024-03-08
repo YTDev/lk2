@@ -85,6 +85,7 @@
 :root {
     /* Global Colors */
     --hero-bg: #1f2431;
+    
     --light-fc: #eef2f9;
     --section-title-color: #4c4e53;
     --work-bg:#443A65;
@@ -186,6 +187,8 @@ html {
     backdrop-filter: blur(50px);
     position: relative;
     z-index: 100;/*pay attention to this beacause i did add the particle js thing...*/
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .header__main-container {
@@ -306,6 +309,10 @@ html {
         background-color: transparent;
     }
 
+    .header__main{
+        padding-top:  10px;
+        padding-bottom: 10px;
+    }
 
     .nav-list {
         display: flex;
@@ -372,6 +379,8 @@ html {
 .hero {
     position: relative;
     background: var(--hero-bg);
+    /* background: #efefef;
+    color: #000; */
     color: var(--light-fc);
 
 
@@ -862,6 +871,7 @@ html {
 ************************************************************/
 .testimonials {
     background: linear-gradient(0deg, #f1f4f9, #fff 10em);
+    
 }
 
 
