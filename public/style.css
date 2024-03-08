@@ -137,7 +137,7 @@ html {
     color: var(--section-title-color);
     text-align: center;
     font-size: 2em;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 1.5em;
 }
 
@@ -757,8 +757,8 @@ html {
 #uploadForm{
     /* border: 1px solid #2979FF; */
     height: 100%;
-    padding: 100px 10px;
-    border-radius: 20px;
+    padding: 100px 0px;
+    /* border-radius: 20px; */
 }
 
 /* Basic styling for text and form elements for better appearance */
