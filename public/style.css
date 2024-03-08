@@ -172,9 +172,9 @@ html {
 .header__announcement {
     background: #000;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     color: #fff;
-    font-size: 11px;
+    font-size: 15px;
 }
 
 
@@ -296,7 +296,8 @@ html {
 
 @media (min-width: 769px) {
     .header__announcement{
-        font-size: 15px;
+         font-size: 17px; 
+         padding: 17px;
     }
 
     .header__navigation {
@@ -936,15 +937,18 @@ html {
     color: #000;
     font-weight: 400;
 }
+
 .testimonial__user-info{
     display: block;
     letter-spacing: 1px;
     font-size: 12px;
     padding-top: 6px;
 }
+
 .prevBtn__container{
     transform: rotate(180deg);
 }
+
 .prevBtn__container,.nextBtn__container{
     width: 17px;
 }
