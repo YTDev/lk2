@@ -84,8 +84,8 @@
 
 :root {
     /* Global Colors */
-    --hero-bg: #1f2431;
-    
+    /* --hero-bg: #1f2431; */
+    --hero-bg: #efefef;
     --light-fc: #eef2f9;
     --section-title-color: #4c4e53;
     --work-bg:#443A65;
@@ -169,13 +169,17 @@ html {
 *                                                            *
 ************************************************************/
 
-
+.announcement-link{
+    color: #000;
+    
+}
 .header__announcement {
-    background: #000;
+    background: #efefef;
     text-align: center;
-    padding: 10px;
-    color: #fff;
+    padding: 8px;
+    color: #000;
     font-size: 15px;
+    
 }
 
 
@@ -201,8 +205,26 @@ html {
 }
 
 
+.header__logo-link{
+    font-weight: 900;
+    font-size: 40px;
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    
+}
+
 .header__logo{
-    width: 100px;
+    display: inline-block;
+}
+
+.header__logo svg{
+    width: 50px;
+    height: 25px;
+    
 }
 
 
@@ -300,7 +322,7 @@ html {
 @media (min-width: 769px) {
     .header__announcement{
          font-size: 17px; 
-         padding: 17px;
+         padding: 14px;
     }
 
     .header__navigation {
@@ -378,10 +400,10 @@ html {
 
 .hero {
     position: relative;
-    background: var(--hero-bg);
-    /* background: #efefef;
-    color: #000; */
-    color: var(--light-fc);
+    /* background: var(--hero-bg); */
+    background: #fff;
+    color: #000;
+    /* color: var(--light-fc); */
 
 
 
@@ -395,7 +417,8 @@ html {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    height: 100vh;
+    height: 75vh;
+    border-bottom: 1px solid #efefef;
     
 
 }
@@ -452,9 +475,9 @@ html {
 
 
 .button--secondary {
-    background-color: transparent;
-    border-color: #FFFFFF;
-
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
 }
 
 .button--secondary .button__icon {
@@ -464,7 +487,7 @@ html {
 
 .button--secondary:hover .button__icon,
 .button--secondary:focus .button__icon {
-    fill: var(--hero-bg);
+    fill: #000;
 }
 
 
@@ -472,7 +495,7 @@ html {
 .button:hover,
 .button:focus {
     background-color: #FFFFFF;
-    color: var(--hero-bg);
+    color: #000;
     border-color: var(hero-bg)
 }
 
@@ -639,8 +662,8 @@ html {
 .tabs__controls {
     display: flex;
     /* background: var(--hero-bg); */
-    background-color: var(--tabs-bg);
-    
+    /* background-color: var(--tabs-bg); */
+    background-color: #000;
     border-radius: 25px 25px 0 0;
     
 }
@@ -664,7 +687,7 @@ html {
     cursor: pointer;
     transition: background 0.3s ease;
     color: #fff;
-    opacity: .5;
+    opacity: .3;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -733,9 +756,11 @@ html {
     background: url("img/pbu-bg.jpg");
     background-position: center;
     background-size: cover;
-    /* background-blend-mode: luminosity;
-    background-color: #999; */
-    background-color: var(--hero-bg);
+    /* background-blend-mode:  screen;
+    background-color: #efefef; */
+    
+    
+    /* background-color: var(--hero-bg); */
 }
 
 .pbu {
