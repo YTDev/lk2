@@ -207,8 +207,7 @@ html {
     backdrop-filter: blur(50px);
     position: relative;
     z-index: 100;/*pay attention to this beacause i did add the particle js thing...*/
-    padding-top: 5px;
-    padding-bottom: 5px;
+    
 }
 
 .header__main-container {
@@ -218,18 +217,20 @@ html {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
+    padding: 10px;
 }
 
 
 .header__logo-link{
     font-weight: 900;
-    font-size: 40px;
+    font-size: 35px;
     text-decoration: none;
-    color: #000;
+    color: var(--blue);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0px;
+    line-height: 0;
     
 }
 
@@ -238,8 +239,8 @@ html {
 }
 
 .header__logo svg{
-    width: 50px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     
 }
 
@@ -347,9 +348,8 @@ html {
         background-color: transparent;
     }
 
-    .header__main{
-        padding-top:  10px;
-        padding-bottom: 10px;
+    .header__main-container{
+        padding: 10px;
     }
 
     .nav-list {
@@ -1292,7 +1292,7 @@ html {
     padding: 10px 20px;
     font-size: 1rem;
     color: #fff;
-    background-color: var(--hero-bg);
+    background-color: var(--black);
     max-width: 200px;
     width: 100%;
     border: none;
@@ -1304,8 +1304,8 @@ html {
 
 .contact-us__form-submit:hover {
     background-color: transparent;
-    color: var(--hero-bg);
-    border: 1px solid var(--hero-bg);
+    color: var(--black);
+    border: 1px solid var(--black);
 }
 
 /* Adjustments for larger screens */
