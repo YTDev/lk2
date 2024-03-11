@@ -421,7 +421,7 @@ html {
     color: #000;
     /* color: var(--light-fc); */
 
-
+    
 
 }
 
@@ -433,8 +433,8 @@ html {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    height: 75vh;
-    border-bottom: 1px solid #efefef;
+    height: 100vh;
+    /* border-bottom: 1px solid #efefef; */
     
 
 }
@@ -1095,7 +1095,7 @@ html {
 ************************************************************/
 
 .integration{
-    background: var(--grey);
+    background: #fff;
     color: #000;
 }
 
