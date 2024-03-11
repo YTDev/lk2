@@ -822,9 +822,9 @@ html {
 }
 
 .pbu__desc {
-    font-size: 26px;
+    font-size: 17px;
     margin-bottom: 20px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     font-weight: 300;
 }
 
@@ -843,12 +843,18 @@ html {
     border-color: #ffffff;
 }
 
-#uploadButton::placeholder {
+.uploadForm__btns{
+    display: flex;
+    gap: 10px;
+}
+
+.uploadButton::placeholder {
     color: #999;
 }
 
 
-#uploadButton {
+.uploadButton {
+    
     width: 100%;
     padding: 10px;
     border: none;
@@ -858,13 +864,35 @@ html {
     background-color: var(--blue);
     border-color: var(--blue);
     color: #fff;
+    font-family: var(--font-family);
 }
 
-#uploadButton:hover,
-#uploadButton:focus {
+.uploadButton:hover,
+.uploadButton:focus {
     color: var(--blue);
     background-color: #FFFFFF;
     border: 2px solid var(--blue);
+}
+
+
+.uploadForm__Clear{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #fff;
+    color: #000;
+    font-family: var(--font-family);
+    border: 2px solid var(--blue);
+}
+
+.uploadForm__Clear:hover,
+.uploadForm__Clear:focus {
+    color: #fff;
+    background-color: var(--blue);
+   
 }
 
 /* Media query for larger screens */
@@ -902,6 +930,10 @@ html {
         /* font-size: 26px; */
 
         /* Larger font size for desktop */
+    }
+
+    .pbu__desc{
+        font-size: 24px;
     }
 }
 

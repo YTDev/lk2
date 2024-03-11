@@ -186,7 +186,11 @@
         <form id="uploadForm" enctype="multipart/form-data">
           <input type="text" id="apiTokenInput" name="apiToken" placeholder="Enter Printify API Token" required>
           <input type="file" id="imageInput" accept="image/*" name="image" multiple>
-          <button type="submit" id="uploadButton">Upload Images</button>
+          <div class="uploadForm__btns">
+            <button type="submit" class="uploadButton">Upload Images</button>
+            <button type="submit" class="uploadForm__Clear">Clear UI</button>
+          </div>
+          
         </form>
       </div>
 
