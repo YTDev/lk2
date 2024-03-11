@@ -769,14 +769,9 @@ html {
 
 
 #pbu{
-    background: url("img/pbu-bg.jpg");
-    background-position: center;
-    background-size: cover;
-    /* background-blend-mode:  screen;
-    background-color: #efefef; */
     
+    background-color: var(--blue);
     
-    /* background-color: var(--hero-bg); */
 }
 
 .pbu {
@@ -784,44 +779,53 @@ html {
     flex-direction: column;
     align-items: center;
     
-    /* Center items on mobile */
     color: #fff;
     gap: 20px;
-    /* Space between content and form */
-    width: 100%;
-    /* Ensures the section takes full width of its container */
-    /* max-width: 1200px; */
-    /* Sets a maximum width to prevent the content from stretching too far on large screens */
-    margin: auto;
     
-    /* background: var(--tabs-bg); */
+    width: 100%;
+    
+    margin: auto;
+
+    
     
 }
+
+.pbu__content{
+    padding: 10px;
+}
+
 
 .pbu__content,
 #uploadForm {
     width: 100%;
     /* Full width on mobile */
     
+    
 }
 
 #uploadForm{
-    /* border: 1px solid #2979FF; */
-    height: 100%;
-    padding: 100px 0px;
+    border: 1px solid #fff;
+    /* height: 100%; */
+    /* padding: 100px 0px; */
+    background-color: #fff;
     /* border-radius: 20px; */
+    padding: 100px 10px;
+    
+    
 }
 
 /* Basic styling for text and form elements for better appearance */
 .pbu__title {
-    font-size: 20px;
+    font-size: 36px;
     margin-bottom: 10px;
     font-weight: 800;
 }
 
 .pbu__desc {
-    font-size: 16px;
+    font-size: 26px;
     margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    font-weight: 300;
 }
 
 #apiTokenInput {
@@ -847,8 +851,6 @@ html {
 #uploadButton {
     width: 100%;
     padding: 10px;
-    
-    
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -870,9 +872,12 @@ html {
 
     #uploadForm{
         order: 1;
+        
+        
     }
     .pbu__content{
         order: 2;
+        
     }
     .pbu {
         
@@ -886,15 +891,15 @@ html {
     .pbu__content,
     #uploadForm {
         flex: 1;
-        /* Allow both to grow equally */
+        
         min-width: 300px;
-        /* Prevent them from getting too narrow */
+        
         max-width: 50%;
-        /* Limit width to avoid overly wide elements */
+        
     }
 
     .pbu__title {
-        font-size: 26px;
+        /* font-size: 26px; */
 
         /* Larger font size for desktop */
     }
