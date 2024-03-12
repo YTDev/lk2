@@ -232,6 +232,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    document.querySelector('.uploadForm__Clear').addEventListener('click', function () {
+        pond.removeFiles(); // Clears all files from FilePond
+    });
+    
 
 
 
