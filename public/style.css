@@ -692,6 +692,12 @@ html {
     
 }
 
+.tabs__link{
+    color: var(--blue);
+    text-decoration: underline;
+    
+}
+
 .tabs__controls {
     display: flex;
     border-radius: 25px 25px 0 0;
