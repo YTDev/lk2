@@ -695,8 +695,9 @@ html {
 .tabs__controls {
     display: flex;
     border-radius: 25px 25px 0 0;
+    background: var(--grey);
     /* background-color: var(--grey); */
-    border: 1px solid var(--blue);
+    /* border: 1px solid var(--blue); */
 }
 
 .tabs__icon{
@@ -1024,8 +1025,6 @@ html {
     flex: 0 0 auto;
     box-sizing: border-box;
     text-align: center;
-    padding: 20px;
-    
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -1274,13 +1273,15 @@ html {
 *                                                            *
 ************************************************************/
 .newsletter{
-    background: linear-gradient(#efefef, #fff 10em);
+    /* background: linear-gradient(#efefef, #fff 10em); */
 }
 
 
 .newsletter__description{
     margin: 0 auto;
     margin-bottom: 32px;
+    
+    
 }
 
 
@@ -1344,7 +1345,7 @@ html {
 
 .upcoming-updates {
     /* padding-top: 8em; */
-    background: var(--updates-bg);
+    /* background: var(--updates-bg); */
 }
 
 .upcoming-updates__title {
@@ -1355,22 +1356,32 @@ html {
 
 .upcoming-updates__list{
     margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .upcoming-updates__item {
+    background-color: var(--grey);
+    color: #000;
     margin-bottom: 20px;
+    /* max-width: 300px; */
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+    
 }
 
 .upcoming-updates__item-title {
     font-size: .9rem;
-    color: var(--dark-grey);
+    
     margin-bottom: 10px;
     font-weight: 600;
 }
 
 .upcoming-updates__item-description {
     font-size: .8rem;
-    color: #606368;
+    
     line-height: 1.6;
     font-weight: 300;
 }
@@ -1384,6 +1395,7 @@ html {
 
     .upcoming-updates__title {
         font-size: 2rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .upcoming-updates__item-title {
@@ -1398,9 +1410,9 @@ html {
 /* Further enhancements for larger desktops */
 @media (min-width: 1024px) {
     .upcoming-updates__list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        
+        grid-template-columns: repeat(3, 1fr);
+        
     }
 
     .upcoming-updates__item {
