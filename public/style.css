@@ -1476,6 +1476,7 @@ html {
 }
 
 .contact-us__form-submit {
+    font-family: var(--font-family);
     padding: 10px 20px;
     font-size: 1rem;
     color: #fff;
