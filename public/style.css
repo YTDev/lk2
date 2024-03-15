@@ -1588,6 +1588,43 @@ html {
 }
 
 
+/************************************************************
+*                                                            *
+*                       api page STYLES                        *
+*                                                            *
+************************************************************/
+
+.guide__step-title{
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.guide__note{
+    margin-top: 15px;
+    
+    font-style: italic;
+    /* font-weight: 300; */
+}
+.guide__text{
+    line-height: 1.3;
+    font-size: 18px;
+}
+
+.guide__link{
+    color: var(--blue);
+}
+
+.guide__step{
+    margin-bottom: 40px;
+}
+
+.guide__img{
+    /* max-width: 800px;
+    width: 100%; */
+    max-width: 100%;
+    margin-top: 24px;
+}
 
 
 /************************************************************
