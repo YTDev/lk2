@@ -1593,18 +1593,28 @@ html {
 *                       api page STYLES                        *
 *                                                            *
 ************************************************************/
+.guide__container{
+    max-width: 950px;
+    width: 100%;
+    margin: 0 auto;
+}
+.guide__intro{
+    font-size: 18px;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
 
 .guide__step-title{
     font-weight: 600;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .guide__note{
     margin-top: 15px;
     
     font-style: italic;
-    /* font-weight: 300; */
+    
 }
 .guide__text{
     line-height: 1.3;
@@ -1620,12 +1630,34 @@ html {
 }
 
 .guide__img{
-    /* max-width: 800px;
-    width: 100%; */
+    
+    display: block;
+    width: 100%;
     max-width: 100%;
-    margin-top: 24px;
+    margin: 24px auto;
+    height: auto;
 }
 
+
+.guide__img-wrapper {
+    cursor: zoom-in; /* Indicates the image can be zoomed */
+  }
+  
+  .guide__img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease; /* Smooth transition for the transform */
+  }
+  
+  .image-zoom__checkbox {
+      display: none; /* Hide the actual checkbox */
+  }
+  
+  .image-zoom__checkbox:checked + .guide__img-wrapper .guide__img {
+      transform: scale(2); /* Zoom effect */
+      cursor: zoom-out;
+  }
+  
 
 /************************************************************
 *                                                            *

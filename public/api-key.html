@@ -51,13 +51,12 @@
                 </a>
                 <input type="checkbox" name="" id="chkBox">
                 <label for="chkBox" class="menu">
-                    <!-- here  use ids, classes you face specifity issues -->
+
                     <i class='bx bx-menu' id="menu__open"></i>
                     <i class='bx bx-x' id="menu__close"></i>
                 </label>
                 <nav class="header__navigation">
-                    <!--                its better if we use ul and li 
-    beacause of the little hover effect of the nav links -->
+
                     <ul class="nav-list">
                         <li class="nav-list__item nav-list__item--active">
                             <a href="/" class="nav-list__link">Home</a>
@@ -82,41 +81,63 @@
 
 
         <article class="guide section">
-            <div class="section-container">
+            <div class="guide__container">
                 <h1 class="guide__title section-title">How to Generate Your Printify API Token</h1>
+                <p class="guide__intro">Unlock the full potential of your Printify experience with our straightforward guide on obtaining your API token. Whether you're aiming to automate your workflow with the Printify Bulk Uploader or simply looking to enhance your print-on-demand services, securing an API token is a crucial first step. This guide promises a seamless process, from logging into your account to integrating Printify with your favorite apps. Let's dive in and unlock new possibilities for your business in just a few simple steps.</p>
 
                 <div class="guide__step">
                     <h2 class="guide__step-title">Step 1: Navigate to Connections</h2>
-                    <p class="guide__text">Log in to your Printify account and find the <a class="guide__link" href="https://printify.com/app/account/api" target="_self">Connections</a> section. This is where
-                        you can manage your API tokens.</p>
+                    <p class="guide__text">Log in to your Printify account and find the <a class="guide__link"
+                            href="https://printify.com/app/account/api" target="_self">Connections</a> section. This is
+                        where you can manage your API tokens.</p>
                 </div>
-    
+
                 <div class="guide__step">
                     <h2 class="guide__step-title">Step 2: Enter Developer Contact Email</h2>
                     <p class="guide__text">It's a good idea to use a separate email for API notifications. If you have a
                         team member who oversees your integrations, use their email here.</p>
-                    <img src="img/api-3.png" class="guide__img" alt="">
+
+
+                    <!-- Hidden checkbox -->
+                    <input type="checkbox" id="zoomCheck1" class="image-zoom__checkbox">
+
+                    <!-- Image label for checkbox (acts as the clickable image) -->
+                    <label for="zoomCheck1" class="guide__img-wrapper">
+                        <img src="img/api-3.png" class="guide__img" alt="">
+                    </label>
                 </div>
-    
+
                 <div class="guide__step">
                     <h2 class="guide__step-title">Step 3: Generate Your Token</h2>
                     <p class="guide__text">Click 'Generate' to create your token. Choose a memorable name and select the
                         appropriate access scopes for your needs.</p>
-                    <img src="img/api-4.png" alt="" class="guide__img">
+                    <!-- Unique checkbox for step 2 -->
+                    <input type="checkbox" id="zoomCheck2" class="image-zoom__checkbox">
+                    <label for="zoomCheck2" class="guide__img-wrapper">
+                        <img src="img/api-4.png" class="guide__img" alt="">
+                    </label>
+
                 </div>
-    
+
                 <div class="guide__step">
                     <h2 class="guide__step-title">Step 4: Copy and Save Your Token</h2>
-                    <p class="guide__text">Make sure to copy and securely save your token right away. Remember, it won't be
+                    <p class="guide__text">Make sure to copy and securely save your token right away. Remember, it won't
+                        be
                         visible again for security reasons.</p>
-                    <p class="guide__note">Note: Tokens are valid for one year. If lost, you'll need to create a new one.
+                    <p class="guide__note">Note: Tokens are valid for one year. If lost, you'll need to create a new
+                        one.
                     </p>
-                    <img src="img/api-5.png" alt="" class="guide__img">
+                    <!-- Unique checkbox for step 4 -->
+                    <input type="checkbox" id="zoomCheck3" class="image-zoom__checkbox">
+                    <label for="zoomCheck3" class="guide__img-wrapper">
+                        <img src="img/api-5.png" class="guide__img" alt="">
+                    </label>
                 </div>
-    
+
                 <div class="guide__step">
                     <h2 class="guide__step-title">Step 5: Start Integrating</h2>
-                    <p class="guide__text">With your token, you're ready to integrate your Printify account with other apps.
+                    <p class="guide__text">With your token, you're ready to integrate your Printify account with other
+                        apps.
                         Enjoy the process!</p>
                 </div>
             </div>
