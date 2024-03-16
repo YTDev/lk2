@@ -1659,6 +1659,47 @@ html {
   }
   
 
+  /************************************************************
+*                                                            *
+*                       subscribe-thank page STYLES          *
+*                                                            *
+************************************************************/
+
+.thank{
+    text-align: center;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.thank__container{
+    padding: 10px;
+}
+
+
+.thank__title{
+    font-size: 26px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+
+.thank__content{
+    font-size: 24px;
+    margin-bottom: 26px;
+}
+
+.thank__btn{
+    color: var(--blue);
+}
+
+
+
+
+
+
 /************************************************************
 *                                                            *
 *                       Footer STYLES                        *
