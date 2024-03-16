@@ -1658,6 +1658,12 @@ html {
       cursor: zoom-out;
   }
   
+@media (min-width:769px) {
+    .guide__intro, .guide__text{
+        line-height: 1.6;
+    }
+}
+
 
   /************************************************************
 *                                                            *
