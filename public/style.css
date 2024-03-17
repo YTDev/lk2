@@ -637,20 +637,53 @@ html {
 ************************************************************/
 .what{
     background-color: var(--grey);
-}
-.what__intro{
-    margin: 0 auto;
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-    color: var(--black);
     font-weight: 300;
-    font-size: 17px;
     line-height: 1.3;
 }
 
+.what__container{
+    margin: 0 auto;
+    max-width: 900px;
+}
+.what__intro{
+    
+    width: 100%;
+    
+    color: var(--black);
+    
+    font-size: 17px;
+    margin-bottom: 20px;
+    
+}
+.what__features{
+    
+}
+
+.what__features-title{
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.what__list{
+    list-style-type: none;
+}
+
+.what__item{
+    /* background-color: #f8f8f8; */
+    background-color: #fff;
+    
+    padding: 10px;
+    border-left: 5px solid var(--blue); 
+    font-size: 16px;
+    color: #333;
+}
+
+.what__item:not(:last-child){
+    margin-bottom: 15px;
+}
+
 @media (min-width: 769px) {
-    .what__intro{
+    .what{
         line-height: 1.6;
     }
 }
