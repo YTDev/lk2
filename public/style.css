@@ -327,7 +327,8 @@ html {
 
 .nav-list__link {
     display: block;
-    color: var(--secondary-color);
+    /* color: var(--secondary-color); */
+    color: var(--black);
     text-decoration: none;
     padding: 10px;
     position: relative;
@@ -336,7 +337,8 @@ html {
 
 
 .nav-list__link:hover {
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
+    color: var(--blue);
 }
 
 
@@ -387,7 +389,8 @@ html {
         display: block;
         width: calc(100% - 20px);
         font-size: 20px;
-        color: var(--secondary-color);
+        /* color: var(--secondary-color); */
+        color: var(--blue);
         transition: opacity 0.3s ease-in-out; 
         /*full width - left/right padding*/
 
