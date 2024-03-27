@@ -1567,6 +1567,45 @@ html {
 }
 
 
+
+/************************************************************
+*                                                            *
+*                       Privacy STYLES                        *
+*                                                            *
+************************************************************/
+.privacy-policy-container, .terms-of-service-container {
+    
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
+.privacy-policy__section {
+    margin-bottom: 20px;
+}
+.privacy-policy__title,.terms-of-service__title {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+.privacy-policy__subtitle, .terms-of-service__section-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.privacy-policy__text, .terms-of-service__text {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+.privacy-policy__list {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+.privacy-policy__link{
+    color: var(--black);
+}
+
+
+
+
 /************************************************************
 *                                                            *
 *                       About me STYLES                        *
